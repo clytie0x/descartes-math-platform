@@ -108,6 +108,49 @@ function initDrawer(): void {
   setOpen(false);
 }
 
+function initSidebarScroll(): void {
+  const sidebar = $(".sidebar");
+  if (!sidebar) return;
+  const key = "dc-sidebar-scroll";
+  let savedTop: number | null = null;
+  try {
+    const saved = sessionStorage.getItem(key);
+    if (saved !== null && Number.isFinite(Number(saved)) && Number(saved) >= 0) savedTop = Number(saved);
+  } catch { /* Storage can be unavailable in private or restricted browsing. */ }
+
+  let restored = false;
+  let interacted = false;
+  const remember = (): void => {
+    if (!restored) return;
+    try { sessionStorage.setItem(key, String(sidebar.scrollTop)); } catch { /* Navigation still works. */ }
+  };
+  for (const event of ["wheel", "touchstart", "pointerdown", "keydown"]) {
+    sidebar.addEventListener(event, () => { interacted = true; }, { once: true, passive: true });
+  }
+  sidebar.addEventListener("scroll", remember, { passive: true });
+  sidebar.addEventListener("click", () => { restored = true; remember(); }, { capture: true });
+  window.addEventListener("pagehide", () => { restored = true; remember(); });
+
+  // TOC links and track filters are ready before this runs; fonts can still change link heights.
+  void document.fonts.ready.then(() => requestAnimationFrame(() => {
+    if (!interacted) {
+      if (savedTop !== null) sidebar.scrollTop = savedTop;
+      const current = sidebar.querySelector<HTMLElement>('a[aria-current="page"]');
+      if (current?.getClientRects().length) {
+        const box = sidebar.getBoundingClientRect();
+        const link = current.getBoundingClientRect();
+        const header = window.innerWidth <= 960 ? sidebar.querySelector<HTMLElement>(".drawer-head")?.offsetHeight ?? 0 : 0;
+        const top = box.top + header + 12;
+        const bottom = box.bottom - 12;
+        if (link.top < top) sidebar.scrollTop -= top - link.top;
+        else if (link.bottom > bottom) sidebar.scrollTop += link.bottom - bottom;
+      }
+    }
+    restored = true;
+    remember();
+  }));
+}
+
 /* ---------- สารบัญในหน้า และไฮไลต์ขณะเลื่อน ---------- */
 
 function initToc(): void {
@@ -452,6 +495,7 @@ function start(): void {
   initSteps();
   initToc();
   initTrack();
+  initSidebarScroll();
   initHeroPlane();
   initLazy();
 }

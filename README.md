@@ -42,12 +42,13 @@ npm run dev
 
 ## Browser regression
 
-With the local static preview running, the mobile navigation regression can be repeated using the Playwright CLI already used for this project:
+With the local static preview running, navigation, sidebar-position and math regressions can be repeated using the Playwright CLI already used for this project:
 
 ```powershell
 npx --yes --package @playwright/cli playwright-cli --session descartes-check open http://127.0.0.1:4321/
 npx --yes --package @playwright/cli playwright-cli --session descartes-check run-code --filename=tools/browser_navigation.js
 npx --yes --package @playwright/cli playwright-cli --session descartes-check run-code --filename=tools/browser_math.js
+npx --yes --package @playwright/cli playwright-cli --session descartes-check run-code --filename=tools/browser_sidebar.js
 npx --yes --package @playwright/cli playwright-cli --session descartes-check close
 ```
 
