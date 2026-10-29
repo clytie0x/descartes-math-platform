@@ -4,7 +4,7 @@
 
 สถานะ `unconfirmed` เริ่ม 28 ต.ค. 2569 แผนทั้งหมดอยู่ที่ [docs/plan.md](docs/plan.md) สารบัญ 50 บทอยู่ที่ `src/site.toml`
 
-All 50 chapters are authored, with 232 instructional pages and 492 exercises. The deployment target is [math.teerapat.codes](https://math.teerapat.codes/), published by the [Pages workflow](https://github.com/clytie0x/descartes-math-platform/actions/workflows/pages.yml). Current system fixes and local verification are recorded in [docs/system-followup.md](docs/system-followup.md); [docs/progress.md](docs/progress.md) records the earlier revision. Physical-device classroom acceptance remains unverified.
+All 50 chapters are authored, with 232 instructional pages and 492 exercises. The deployment target is [math.teerapat.codes](https://math.teerapat.codes/), published by the [Pages workflow](https://github.com/clytie0x/descartes-math-platform/actions/workflows/pages.yml). The complete prose/exercise audit and its corrections are recorded in [docs/content-audit.md](docs/content-audit.md). System fixes and earlier local verification are recorded in [docs/system-followup.md](docs/system-followup.md); [docs/progress.md](docs/progress.md) records the earlier revision. Physical-device classroom acceptance remains unverified.
 
 ## สร้างเว็บในเครื่อง
 

@@ -36,7 +36,7 @@ $$\|\mathbf u-\mathbf v\|^2=\|\mathbf u\|^2+\|\mathbf v\|^2-2\|\mathbf u\|\|\mat
 อีกทางหนึ่ง กระจายข้างซ้ายด้วยสมบัติข้างบน $\|\mathbf u-\mathbf v\|^2=(\mathbf u-\mathbf v)\cdot(\mathbf u-\mathbf v)=\|\mathbf u\|^2-2\,\mathbf u\cdot\mathbf v+\|\mathbf v\|^2$ เทียบสองบรรทัดนี้แล้วตัดพจน์ที่เหมือนกันออก ได้ $\mathbf u\cdot\mathbf v=\|\mathbf u\|\|\mathbf v\|\cos\theta$
 
 <Thm>
-$\mathbf u\cdot\mathbf v=u_1v_1+u_2v_2+u_3v_3=\|\mathbf u\|\|\mathbf v\|\cos\theta$ เมื่อ $0\le\theta\le\pi$
+$\mathbf u\cdot\mathbf v=u_1v_1+u_2v_2+u_3v_3=\|\mathbf u\|\|\mathbf v\|\cos\theta$ เมื่อ $\mathbf u$ และ $\mathbf v$ ไม่เป็นเวกเตอร์ศูนย์ และ $0\le\theta\le\pi$ เป็นมุมระหว่างเวกเตอร์ทั้งสอง ถ้ามีเวกเตอร์ศูนย์ สูตรพิกัดยังใช้หาดอตโปรดักต์ได้ แต่ไม่นิยามมุมระหว่างเวกเตอร์
 </Thm>
 
 ผลลัพธ์เป็นสเกลาร์ ถ้าเวกเตอร์ไม่เป็นศูนย์ ดอตโปรดักต์เป็นศูนย์ก็ต่อเมื่อตั้งฉาก เครื่องหมายบวกบอกมุมแหลมและลบบอกมุมป้าน หามุมโดยหารด้วยผลคูณขนาดก่อนใช้ฟังก์ชันผกผัน
@@ -115,7 +115,7 @@ $\mathbf u=\langle2,1\rangle$ กับ $\mathbf v=\langle1,-2\rangle$ ตั้
 ถ้า $\mathbf u\cdot\mathbf v=\mathbf u\cdot\mathbf w$ และ $\mathbf u\ne\mathbf0$ ตัด $\mathbf u$ ออกแล้วสรุปว่า $\mathbf v=\mathbf w$ ได้ไหม
 
 <Reveal>
-ไม่ได้ ลอง $\mathbf u=\langle1,0\rangle$ $\mathbf v=\langle2,3\rangle$ และ $\mathbf w=\langle2,-5\rangle$ ดอตกับ $\mathbf u$ ได้ $2$ เท่ากันทั้งคู่ แต่ $\mathbf v\ne\mathbf w$ สิ่งที่สรุปได้คือ $\mathbf u\cdot(\mathbf v-\mathbf w)=0$ แปลว่า $\mathbf v-\mathbf w$ ตั้งฉากกับ $\mathbf u$ เท่านั้น ดอตโปรดักต์ไม่มีการหาร จึงตัดทิ้งแบบสมการจำนวนไม่ได้
+ไม่ได้ ลอง $\mathbf u=\langle1,0\rangle$ $\mathbf v=\langle2,3\rangle$ และ $\mathbf w=\langle2,-5\rangle$ ดอตกับ $\mathbf u$ ได้ $2$ เท่ากันทั้งคู่ แต่ $\mathbf v\ne\mathbf w$ สิ่งที่สรุปได้คือ $\mathbf u\cdot(\mathbf v-\mathbf w)=0$ ถ้าผลต่างไม่เป็นศูนย์จึงบอกได้ว่าทำมุมฉากกับ $\mathbf u$ แต่ผลต่างอาจเป็นเวกเตอร์ศูนย์เมื่อ $\mathbf v=\mathbf w$ ก็ได้ ดอตโปรดักต์ไม่มีการหาร จึงตัดทิ้งแบบสมการจำนวนไม่ได้
 </Reveal>
 </Think>
 
@@ -123,11 +123,11 @@ $\mathbf u=\langle2,1\rangle$ กับ $\mathbf v=\langle1,-2\rangle$ ตั้
 
 ## โครงฉาย
 
-ส่องไฟลงมาตั้งฉากกับแนวของ $\mathbf v$ เงาของ $\mathbf u$ ที่ตกบนแนวนั้นเรียกว่า**โครงฉาย**ของ $\mathbf u$ บน $\mathbf v$ ความยาวแบบมีเครื่องหมายของเงาคือ $\|\mathbf u\|\cos\theta$ แทน $\cos\theta$ จากสูตรมุมได้ $\dfrac{\mathbf u\cdot\mathbf v}{\|\mathbf v\|}$ ถ้าต้องการเงาเป็นเวกเตอร์ ให้คูณความยาวนี้กับเวกเตอร์หนึ่งหน่วยในทิศ $\mathbf v$
+กำหนดให้ $\mathbf v\ne\mathbf0$ เพื่อให้มีทิศและหารด้วยขนาดของมันได้ ส่องไฟลงมาตั้งฉากกับแนวของ $\mathbf v$ เงาของ $\mathbf u$ ที่ตกบนแนวนั้นเรียกว่า**โครงฉาย**ของ $\mathbf u$ บน $\mathbf v$ เมื่อ $\mathbf u\ne\mathbf0$ ความยาวแบบมีเครื่องหมายของเงาคือ $\|\mathbf u\|\cos\theta$ แทน $\cos\theta$ จากสูตรมุมได้ $\dfrac{\mathbf u\cdot\mathbf v}{\|\mathbf v\|}$ ถ้าต้องการเงาเป็นเวกเตอร์ ให้คูณความยาวนี้กับเวกเตอร์หนึ่งหน่วยในทิศ $\mathbf v$ ถ้า $\mathbf u=\mathbf0$ โครงฉายเป็นเวกเตอร์ศูนย์โดยตรง ไม่ต้องใช้มุม
 
 $$\operatorname{proj}_{\mathbf v}\mathbf u=\frac{\mathbf u\cdot\mathbf v}{\|\mathbf v\|^2}\,\mathbf v$$
 
-ส่วนที่เหลือ $\mathbf u-\operatorname{proj}_{\mathbf v}\mathbf u$ ตั้งฉากกับ $\mathbf v$ เสมอ จึงแยก $\mathbf u$ เป็นสองส่วนได้ ส่วนหนึ่งขนานกับ $\mathbf v$ อีกส่วนตั้งฉาก
+ส่วนที่เหลือ $\mathbf u-\operatorname{proj}_{\mathbf v}\mathbf u$ ดอตกับ $\mathbf v$ ได้ศูนย์เสมอ ถ้าส่วนที่เหลือไม่เป็นศูนย์ มันจึงทำมุมฉากกับ $\mathbf v$ แต่ถ้า $\mathbf u$ อยู่ในแนวเดียวกับ $\mathbf v$ ส่วนที่เหลือจะเป็นศูนย์ เป็นการแยกเวกเตอร์ออกเป็นส่วนตามแนว $\mathbf v$ กับส่วนที่ไม่มีองค์ประกอบตามแนวนั้น
 
 <Example n={6}>
 
@@ -165,7 +165,7 @@ $$\operatorname{proj}_{\mathbf v}\mathbf u=\frac{\mathbf u\cdot\mathbf v}{\|\mat
 <Steps reveal>
 1. ใช้รูปมุม $W=\|\mathbf F\|\|\mathbf s\|\cos\theta=50\times20\times\cos60^\circ=50\times20\times\tfrac12=500$ จูล
 2. ตรวจด้วยองค์ประกอบ แรงคือ $\langle50\cos60^\circ,\ 50\sin60^\circ\rangle=\langle25,25\sqrt3\rangle$ การกระจัดคือ $\langle20,0\rangle$ ดอตกันได้ $25(20)+0=500$ ตรงกัน
-3. แรงส่วนที่ลากไปข้างหน้ามีแค่ $25$ นิวตัน ถ้าเชือกตั้งฉากกับพื้น $\cos90^\circ=0$ งานในแนวนอนเป็นศูนย์ แรงทั้งหมดใช้ยกกระเป๋าขึ้น
+3. แรงส่วนที่ลากไปข้างหน้ามีแค่ $25$ นิวตัน ถ้าเชือกตั้งฉากกับพื้น $\cos90^\circ=0$ งานจากแรงนี้สำหรับการกระจัดแนวนอนเป็นศูนย์ เพราะแรงอยู่ในแนวตั้งและไม่มีองค์ประกอบแนวนอน ส่วนกระเป๋าจะยกขึ้นหรือไม่ต้องพิจารณาน้ำหนักและแรงอื่นด้วย
 </Steps>
 </Example>
 
@@ -178,9 +178,9 @@ $$\operatorname{proj}_{\mathbf v}\mathbf u=\frac{\mathbf u\cdot\mathbf v}{\|\mat
 ## สรุป
 
 - ดอตโปรดักต์ให้จำนวน ไม่ใช่เวกเตอร์ และ $\mathbf u\cdot\mathbf u=\|\mathbf u\|^2$
-- ใช้สูตรพิกัดคำนวณแล้วเชื่อมกับสูตรมุม $\cos\theta=\dfrac{\mathbf u\cdot\mathbf v}{\|\mathbf u\|\|\mathbf v\|}$ ซึ่งมาจากกฎของโคไซน์
+- เมื่อเวกเตอร์ทั้งสองไม่เป็นศูนย์ ใช้สูตรมุม $\cos\theta=\dfrac{\mathbf u\cdot\mathbf v}{\|\mathbf u\|\|\mathbf v\|}$ ซึ่งมาจากกฎของโคไซน์
 - เวกเตอร์ไม่เป็นศูนย์ตั้งฉากกันก็ต่อเมื่อดอตกันได้ศูนย์
-- โครงฉายของ $\mathbf u$ บน $\mathbf v$ คือ $\dfrac{\mathbf u\cdot\mathbf v}{\|\mathbf v\|^2}\mathbf v$
+- โครงฉายของ $\mathbf u$ บน $\mathbf v$ คือ $\dfrac{\mathbf u\cdot\mathbf v}{\|\mathbf v\|^2}\mathbf v$ โดยต้องมี $\mathbf v\ne\mathbf0$
 - งานต้องใช้หน่วยของแรงและการกระจัดให้สอดคล้อง
 
 ดอตโปรดักต์บอกว่าเวกเตอร์สองตัวไปทางเดียวกันมากแค่ไหน แต่บางงานต้องการเวกเตอร์ใหม่ที่ตั้งฉากกับทั้งสองตัว เช่นทิศที่ตั้งฉากกับแผ่นหลังคา หน้า 41.4 สร้างการคูณที่ให้ผลเป็นเวกเตอร์แบบนั้น
