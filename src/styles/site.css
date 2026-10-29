@@ -335,10 +335,10 @@ a:hover {
   color: var(--ink-3);
 }
 
-.nav-section-title {
+.nav .nav-section-title {
   align-items: baseline;
   font-weight: 600;
-  color: var(--ink) !important;
+  color: var(--ink);
 }
 .nav-section > ul {
   display: none;

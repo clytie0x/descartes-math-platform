@@ -17,6 +17,11 @@ async (page) => {
   await settled();
   const chapter = await position();
   if (!chapter.visible || chapter.top === 0) throw new Error('Late chapter must remain visible after navigation: '+JSON.stringify(chapter));
+  const selectedColor = await page.evaluate(() => {
+    const current=document.querySelector('.sidebar a[aria-current="page"]');
+    return {title:getComputedStyle(current).color,badge:getComputedStyle(current.querySelector('.num-chip')).color};
+  });
+  if (selectedColor.title!==selectedColor.badge) throw new Error('Selected chapter title must use the contrasting active color: '+JSON.stringify(selectedColor));
   await page.locator('.sidebar .nav-section.is-open > ul:not(.toc-inline) > li > a').first().click();
   await settled();
   const lesson = await position();
