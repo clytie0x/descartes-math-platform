@@ -1,0 +1,13 @@
+title = '''หารด้วยลบ'''
+level = 2
+type = "choice"
+statement = '''คำตอบของ $-2x>10$ คือข้อใด'''
+solution = '''หารทั้งสองข้างด้วย $-2$ ต้องกลับเครื่องหมาย ได้ $x<-5$'''
+hints = ['''หารด้วย −2 แล้วตรวจว่าต้องกลับเครื่องหมายหรือไม่''']
+answer = 0
+choices = ['''$x<-5$''', '''$x>-5$''', '''$x<5$''']
+checks = ['''solve_univariate_inequality(-2*x>10,x,relational=False)==Interval.open(-oo,-5)''']
+
+[[wrong]]
+answer = 1
+message = '''หารด้วยจำนวนลบต้องกลับทิศเครื่องหมาย'''

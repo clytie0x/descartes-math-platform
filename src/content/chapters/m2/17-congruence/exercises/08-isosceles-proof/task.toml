@@ -1,0 +1,42 @@
+title = "เรียงการพิสูจน์ว่าตั้งฉาก"
+level = 3
+type = "order"
+steps = [
+  '$AB = AC$ (กำหนดให้)',
+  '$BD = CD$ ($D$ เป็นจุดกึ่งกลางของ $\overline{BC}$)',
+  '$AD = AD$ (ด้านร่วม)',
+  '$\triangle ABD \cong \triangle ACD$ (ด.ด.ด.)',
+  '$A\hat{D}B = A\hat{D}C$ (มุมคู่ที่สมนัยกันของรูปสามเหลี่ยมที่เท่ากันทุกประการ)',
+  '$A\hat{D}B + A\hat{D}C = 180^\circ$ จึงได้มุมละ $90^\circ$ และ $\overline{AD} \perp \overline{BC}$',
+]
+alternatives = [
+  [0, 2, 1, 3, 4, 5],
+  [1, 0, 2, 3, 4, 5],
+  [1, 2, 0, 3, 4, 5],
+  [2, 0, 1, 3, 4, 5],
+  [2, 1, 0, 3, 4, 5],
+]
+hints = ['ด.ด.ด. ไม่สนลำดับของด้านสามคู่ แต่ทั้งสามคู่ต้องมาก่อนขั้นที่สรุปว่าเท่ากันทุกประการ', 'จะแบ่ง $180^\circ$ เป็นมุมละ $90^\circ$ ได้ ต้องรู้ก่อนว่าสองมุมนั้นเท่ากัน']
+statement = '''
+กำหนดให้ $\triangle ABC$ มี $AB = AC$ และ $D$ เป็นจุดกึ่งกลางของ $\overline{BC}$ จงเรียงขั้นการพิสูจน์ว่า $\overline{AD} \perp \overline{BC}$ ให้ถูกลำดับ
+
+<figure class="figure"><svg class="fig" viewBox="0 0 320 210" role="img" aria-label="รูปสามเหลี่ยม ABC ที่ AB กับ AC มีขีดหนึ่งขีด D เป็นจุดกึ่งกลางของ BC BD กับ DC มีสองขีด ลาก AD"><path class="fill-teal" d="M160 25 L60 185 L160 185 Z" /><path class="fill-violet" d="M160 25 L160 185 L260 185 Z" /><line class="line" x1="115.1" y1="108.2" x2="104.9" y2="101.8" /><line class="line" x1="215.1" y1="101.8" x2="204.9" y2="108.2" /><line class="line" x1="107.5" y1="179" x2="107.5" y2="191" /><line class="line" x1="112.5" y1="179" x2="112.5" y2="191" /><line class="line" x1="207.5" y1="179" x2="207.5" y2="191" /><line class="line" x1="212.5" y1="179" x2="212.5" y2="191" /><text class="label-math" x="160" y="14" text-anchor="middle">A</text><text class="label-math" x="45.1" y="199.2" text-anchor="middle">B</text><text class="label-math" x="274.9" y="199.2" text-anchor="middle">C</text><text class="label-math" x="160" y="207" text-anchor="middle">D</text></svg></figure>
+'''
+solution = '''
+1. $AB = AC$ (กำหนดให้)
+2. $BD = CD$ ($D$ เป็นจุดกึ่งกลางของ $\overline{BC}$)
+3. $AD = AD$ (ด้านร่วม)
+4. $\triangle ABD \cong \triangle ACD$ (ด.ด.ด.)
+5. $A\hat{D}B = A\hat{D}C$ (มุมคู่ที่สมนัยกันของรูปสามเหลี่ยมที่เท่ากันทุกประการ)
+6. สองมุมนี้รวมกันเป็นมุมตรง $180^\circ$ และเท่ากัน จึงเป็นมุมละ $90^\circ$ ได้ $\overline{AD} \perp \overline{BC}$
+
+สามขั้นแรกสลับกันได้ทุกแบบ เพราะ ด.ด.ด. ใช้ด้านสามคู่โดยไม่มีมุมคั่น
+'''
+
+[[wrong]]
+answer = [0, 1, 2, 3, 5, 4]
+message = "จะสรุปว่ามุมละ 90° ได้ ต้องรู้ก่อนว่ามุม ADB เท่ากับมุม ADC ซึ่งได้จากรูปสามเหลี่ยมที่เท่ากันทุกประการ"
+
+[[wrong]]
+answer = [0, 1, 3, 2, 4, 5]
+message = "ด.ด.ด. ต้องมีด้านเท่ากันครบสามคู่ก่อน ด้านร่วม AD ต้องมาก่อนขั้นที่สรุปว่าเท่ากันทุกประการ"

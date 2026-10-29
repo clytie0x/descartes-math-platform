@@ -1,0 +1,6 @@
+---
+/* กล่องนิยาม */
+interface Props { label?: string }
+const { label = "นิยาม" } = Astro.props;
+---
+<div class="box def"><p class="box-label">{label}</p><slot /></div>

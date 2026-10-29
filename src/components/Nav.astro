@@ -1,0 +1,46 @@
+---
+/* เมนูซ้าย กางเฉพาะบทที่กำลังเปิด บทและหน้าของ ม.ปลาย มี data-levels ให้ซ่อนตามสายที่เลือก */
+import { loadSite, shortTitle, type PageNode } from "../lib/site.ts";
+import TrackSwitch from "./TrackSwitch.astro";
+
+interface Props {
+  current?: PageNode;
+  home: boolean;
+}
+const { current, home } = Astro.props;
+const { chapters } = await loadSite();
+const grades = [...new Set(chapters.map((c) => c.meta.grade))];
+const cur = (url: string) => (current?.url === url ? "page" : undefined);
+---
+<ul class="nav">
+  <li><a href="/" aria-current={home ? "page" : undefined}>หน้าแรก</a>{home && <ul class="toc-inline" aria-label="ในหน้านี้"></ul>}</li>
+  {grades.map((grade) => {
+    const list = chapters.filter((c) => c.meta.grade === grade);
+    const upper = list.some((c) => c.meta.levels);
+    return (
+      <Fragment>
+        <li class="nav-grade">{grade}</li>
+        {upper && <li class="nav-track"><TrackSwitch /></li>}
+        {list.map((ch) => {
+          const open = current?.chapter === ch;
+          return (
+            <li class:list={["nav-section", { "is-open": open }]} data-levels={ch.meta.levels?.join(" ")}>
+              <a class="nav-section-title" href={ch.url} aria-current={cur(ch.url)}>
+                <span class="num-chip">{ch.meta.num}</span><span>{shortTitle(ch.meta.title)}</span>
+              </a>
+              {current === ch.self && <ul class="toc-inline" aria-label="ในหน้านี้"></ul>}
+              <ul>
+                {ch.pages.map((p) => (
+                  <li data-level={p.level}>
+                    <a href={p.url} aria-current={cur(p.url)}><span class="num">{p.num}</span><span>{p.title}</span></a>
+                    {current === p && <ul class="toc-inline" aria-label="ในหน้านี้"></ul>}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          );
+        })}
+      </Fragment>
+    );
+  })}
+</ul>

@@ -1,0 +1,29 @@
+title = "แบ่งครึ่งมุมสองครั้ง"
+level = 2
+type = "number"
+unit = "องศา"
+answer = "63"
+truth = "Rational(84, 2) + Rational(84, 4)"
+hints = ['วาดรูปคร่าวๆ ก่อน รังสี $\overrightarrow{BD}$ อยู่กลางมุม และ $\overrightarrow{BE}$ อยู่กลางมุม $D\hat{B}C$', '$A\hat{B}E = A\hat{B}D + D\hat{B}E$']
+statement = '''
+$A\hat{B}C = 84^\circ$ แบ่งครึ่ง $A\hat{B}C$ ได้รังสี $\overrightarrow{BD}$ แล้วแบ่งครึ่ง $D\hat{B}C$ ได้รังสี $\overrightarrow{BE}$ จงหาขนาดของ $A\hat{B}E$
+'''
+solution = '''
+1. แบ่งครึ่งครั้งแรก $A\hat{B}D = D\hat{B}C = 84^\circ \div 2 = 42^\circ$
+2. แบ่งครึ่ง $D\hat{B}C$ ได้ $D\hat{B}E = E\hat{B}C = 42^\circ \div 2 = 21^\circ$
+3. $A\hat{B}E = A\hat{B}D + D\hat{B}E = 42^\circ + 21^\circ = 63^\circ$
+
+ตรวจอีกทาง $A\hat{B}E = A\hat{B}C - E\hat{B}C = 84^\circ - 21^\circ = 63^\circ$
+'''
+
+[[wrong]]
+answer = "21"
+message = "21° คือมุม DBE หรือมุม EBC ข้อนี้ถามมุม ABE ซึ่งรวมมุม ABD อีก 42° ด้วย"
+
+[[wrong]]
+answer = "42"
+message = "42° คือมุม ABD รังสี BE อยู่เลย BD ไปทาง BC อีก 21°"
+
+[[wrong]]
+answer = "105"
+message = "BE อยู่ภายในมุม ABC มุม ABE จึงต้องเล็กกว่า 84° ลองวาดรูปดูว่า BE อยู่ตรงไหน"

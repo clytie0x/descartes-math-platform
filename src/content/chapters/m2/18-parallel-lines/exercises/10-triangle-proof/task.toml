@@ -1,0 +1,53 @@
+title = "เรียงบทพิสูจน์มุมภายในของรูปสามเหลี่ยม"
+level = 2
+type = "order"
+steps = [
+  'ลาก $\overleftrightarrow{DE}$ ผ่านจุด $A$ ให้ขนานกับ $\overline{BC}$',
+  '$D\hat{A}B = A\hat{B}C$ เพราะเป็นมุมแย้ง',
+  '$E\hat{A}C = A\hat{C}B$ เพราะเป็นมุมแย้ง',
+  '$D\hat{A}B + B\hat{A}C + E\hat{A}C = 180^\circ$ เพราะประกอบกันเป็นมุมตรง',
+  'แทนค่า ได้ $A\hat{B}C + B\hat{A}C + A\hat{C}B = 180^\circ$',
+]
+alternatives = [[0, 2, 1, 3, 4], [0, 3, 1, 2, 4], [0, 3, 2, 1, 4], [0, 1, 3, 2, 4], [0, 2, 3, 1, 4]]
+hints = ['มุม $D\hat{A}B$ ยังไม่มีจนกว่าจะลากเส้น $DE$', 'ขั้นแทนค่าต้องรู้ทั้งผลบวกที่จุด $A$ และมุมแย้งทั้งสองคู่ก่อน']
+statement = '''
+เรียงขั้นตอนพิสูจน์ว่ามุมภายในทั้งสามมุมของรูปสามเหลี่ยม $ABC$ รวมกันได้ $180^\circ$
+
+<figure class="figure">
+<svg class="fig" viewBox="0 0 360 205" role="img" aria-label="รูปสามเหลี่ยม ABC มีเส้นประ DE ผ่านจุด A ขนานกับ BC มุม DAB กับมุม ABC ระบายสีส้ม มุม EAC กับมุม ACB ระบายสีเขียว มุม BAC ระบายสีม่วง">
+  <path class="fill-accent" d="M60 180 L90 180 A30 30 0 0 0 75.7 154.5 Z" />
+  <path class="fill-teal" d="M300 180 L276.7 161.1 A30 30 0 0 0 270 180 Z" />
+  <path class="fill-violet" d="M140 50 L126.4 72.1 A26 26 0 0 0 160.2 66.4 Z" />
+  <path class="fill-accent" d="M140 50 L110 50 A30 30 0 0 0 124.3 75.5 Z" />
+  <path class="fill-teal" d="M140 50 L163.3 68.9 A30 30 0 0 0 170 50 Z" />
+  <line class="dash" x1="30" y1="50" x2="330" y2="50" />
+  <path class="line" d="M140 50 L60 180 L300 180 Z" />
+  <path class="line" d="M236 44 L244 50 L236 56" />
+  <path class="line" d="M236 174 L244 180 L236 186" />
+  <text class="label-math" x="140" y="35" text-anchor="middle">A</text>
+  <text class="label-math" x="46" y="193" text-anchor="middle">B</text>
+  <text class="label-math" x="314" y="193" text-anchor="middle">C</text>
+  <circle class="dot" cx="40" cy="50" r="3.5" />
+  <circle class="dot" cx="320" cy="50" r="3.5" />
+  <text class="label-math" x="40" y="37" text-anchor="middle">D</text>
+  <text class="label-math" x="320" y="37" text-anchor="middle">E</text>
+</svg>
+</figure>
+'''
+solution = '''
+1. ลากเส้นช่วยก่อน คือ $\overleftrightarrow{DE}$ ผ่าน $A$ ขนานกับ $\overline{BC}$
+2. $\overline{AB}$ เป็นเส้นตัด ได้มุมแย้ง $D\hat{A}B = A\hat{B}C$
+3. $\overline{AC}$ เป็นเส้นตัด ได้มุมแย้ง $E\hat{A}C = A\hat{C}B$
+4. มุมสามมุมที่ $A$ บน $\overleftrightarrow{DE}$ รวมกันได้ $180^\circ$
+5. แทนมุมแย้งลงในขั้นที่ 4 ได้ $A\hat{B}C + B\hat{A}C + A\hat{C}B = 180^\circ$
+
+ขั้นที่ 2 ถึง 4 สลับลำดับกันได้ เพราะไม่ได้ใช้ผลของกันและกัน
+'''
+
+[[wrong]]
+answer = [1, 2, 0, 3, 4]
+message = "มุม DAB กับมุม EAC มีได้ก็ต่อเมื่อลากเส้น DE แล้ว ต้องลากเส้นช่วยก่อน"
+
+[[wrong]]
+answer = [0, 1, 2, 4, 3]
+message = "การแทนค่าต้องมีสมการให้แทนก่อน คือมุมสามมุมที่ A รวมกันเป็นมุมตรง ขั้นแทนค่าจึงต้องอยู่ท้ายสุด"

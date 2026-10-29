@@ -1,0 +1,29 @@
+title = "ความกว้างของคลอง"
+level = 2
+type = "number"
+unit = "เมตร"
+answer = "19.2"
+truth = "32 * Rational('0.6')"
+hints = ['มองหารูปสามเหลี่ยมสองรูปที่มี $C$ เป็นจุดยอดร่วม แล้วดูว่ามีมุมอะไรเท่ากันบ้าง', '$\triangle ABC \cong \triangle DEC$ แบบ ม.ด.ม. ด้าน $AB$ จึงยาวเท่ากับ $DE$']
+statement = '''
+สองเพื่อนอยากรู้ว่าคลองหลังโรงเรียนกว้างเท่าไร ฝั่งตรงข้ามมีต้นไม้ $B$ อยู่ตรงข้ามจุด $A$ พอดี โดย $\overline{AB}$ ตั้งฉากกับริมคลอง เขาเดินตามริมคลองจาก $A$ ไป $30$ เมตร ปักธงที่ $C$ เดินต่อไปอีก $30$ เมตรถึง $D$ แล้วเดินจาก $D$ ออกห่างจากคลองในแนวตั้งฉากกับริมคลอง จนถึงจุด $E$ ที่มองไปแล้วเห็นธง $C$ บังต้นไม้ $B$ พอดี นับก้าวจาก $D$ ถึง $E$ ได้ $32$ ก้าว ก้าวละ $0.6$ เมตร คลองกว้างกี่เมตร
+
+<figure class="figure"><svg class="fig" viewBox="0 0 380 285" role="img" aria-label="คลองกว้าง AB ต้นไม้ B อยู่ฝั่งตรงข้ามจุด A เดินตามริมคลองจาก A ไป C 30 เมตร และจาก C ไป D อีก 30 เมตร แล้วเดินจาก D ในแนวตั้งฉากกับริมคลองไปที่ E ซึ่ง E C และ B อยู่ในแนวเดียวกัน"><path class="fill-teal" d="M-10 40 L390 40 L390 150 L-10 150 Z" /><line class="dash" x1="60" y1="150" x2="60" y2="40" /><line class="line" x1="60" y1="150" x2="300" y2="150" /><line class="line" x1="60" y1="40" x2="300" y2="260" /><line class="accent" x1="300" y1="150" x2="300" y2="260" /><path class="line" d="M60 137 L73 137 L73 150" /><path class="line" d="M287 150 L287 163 L300 163" /><line class="line" x1="120" y1="144" x2="120" y2="156" /><line class="line" x1="240" y1="144" x2="240" y2="156" /><path class="accent" d="M160 150 A20 20 0 0 1 165.3 136.5" /><path class="accent" d="M200 150 A20 20 0 0 1 194.7 163.5" /><text class="label" x="270" y="100" text-anchor="middle">คลอง</text><text class="label" x="120" y="172" text-anchor="middle">30 ม.</text><text class="label" x="240" y="172" text-anchor="middle">30 ม.</text><text class="label-math" x="44.8" y="163.6" text-anchor="middle">A</text><text class="label-math" x="48" y="34" text-anchor="middle">B</text><text class="label-math" x="180" y="173" text-anchor="middle">C</text><text class="label-math" x="312" y="168" text-anchor="middle">D</text><text class="label-math" x="315.2" y="273.6" text-anchor="middle">E</text><circle class="dot" cx="60" cy="150" r="4" /><circle class="dot" cx="60" cy="40" r="4" /><circle class="dot" cx="180" cy="150" r="4" /><circle class="dot" cx="300" cy="150" r="4" /><circle class="dot" cx="300" cy="260" r="4" /></svg></figure>
+'''
+solution = '''
+1. $B\hat{A}C = E\hat{D}C = 90^\circ$ (ทั้งคู่ตั้งฉากกับริมคลอง)
+2. $AC = DC = 30$ เมตร (เดินวัดไว้)
+3. $A\hat{C}B = D\hat{C}E$ (มุมตรงข้าม เพราะ $B$ $C$ $E$ อยู่ในแนวเดียวกัน)
+4. $AC$ อยู่ระหว่างมุมที่ $A$ กับมุมที่ $C$ และ $DC$ อยู่ระหว่างมุมที่ $D$ กับมุมที่ $C$ จึงได้ $\triangle ABC \cong \triangle DEC$ (ม.ด.ม.)
+5. $AB = DE$ (ด้านคู่ที่สมนัยกัน) และ $DE = 32 \times 0.6 = 19.2$ เมตร
+
+คลองกว้าง $19.2$ เมตร
+'''
+
+[[wrong]]
+answer = "30"
+message = "30 เมตรคือ AC ซึ่งสมนัยกับ DC ด้านที่สมนัยกับความกว้าง AB คือ DE"
+
+[[wrong]]
+answer = "32"
+message = "32 คือจำนวนก้าวจาก D ถึง E ต้องคูณด้วยความยาวก้าวละ 0.6 เมตรก่อน"

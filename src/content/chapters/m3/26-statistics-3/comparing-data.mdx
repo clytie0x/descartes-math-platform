@@ -1,0 +1,210 @@
+---
+num: '26.4'
+title: 'เปรียบเทียบข้อมูลสองชุด'
+goal: 'เทียบข้อมูลสองชุดด้วยแผนภาพกล่องบนสเกลเดียวกัน ทั้งตำแหน่งและการกระจาย แล้วเขียนข้อสรุปที่มีตัวเลขรองรับ'
+---
+
+ชุมนุมวิทยาศาสตร์เพาะถั่วเขียวสองถาด ถาดแรกเก็บไว้ในกล่องทึบ ถาดที่สองวางไว้ริมหน้าต่าง ผ่านไป 5 วันจึงวัดความสูงของต้นถั่วงอก สุ่มมาถาดละ 11 ต้น จะตอบว่าถาดไหนโตกว่า ดูทีละต้นไม่ได้ เพราะแต่ละต้นสูงไม่เท่ากัน ต้องเทียบทั้งชุด แผนภาพกล่องสองรูปที่วาดบนสเกลเดียวกันทำเรื่องนี้ได้ดีมาก
+
+## วาดสองชุดบนสเกลเดียวกัน
+
+<Example n={1}>
+ความสูงของต้นถั่วงอก (เซนติเมตร) เป็นดังนี้
+
+ถาดในกล่องทึบ 9 12 10 14 11 13 12 15 10 12 16  
+ถาดริมหน้าต่าง 6 8 7 9 5 8 10 7 8 6 9
+
+หาค่าห้าค่าของแต่ละถาด แล้ววาดแผนภาพกล่องทั้งสองบนเส้นจำนวนเดียวกัน
+
+<Steps reveal>
+1. เรียงถาดในกล่องทึบ ได้ 9 10 10 11 12 12 12 13 14 15 16 มี 11 ตัว ตำแหน่งของ $Q_1$ $Q_2$ $Q_3$ คือ 3 6 9 ได้ $Q_1 = 10$ $Q_2 = 12$ $Q_3 = 14$ ค่าต่ำสุด 9 ค่าสูงสุด 16
+2. เรียงถาดริมหน้าต่าง ได้ 5 6 6 7 7 8 8 8 9 9 10 ตำแหน่งเดิม ได้ $Q_1 = 6$ $Q_2 = 8$ $Q_3 = 9$ ค่าต่ำสุด 5 ค่าสูงสุด 10
+3. ข้อมูลทั้งสองชุดอยู่ระหว่าง 5 ถึง 16 วาดเส้นจำนวนเส้นเดียวตั้งแต่ 4 ถึง 17 แล้ววาดแผนภาพกล่องสองรูปซ้อนกันเหนือเส้นนั้น
+</Steps>
+</Example>
+
+{/* check: sorted([9, 12, 10, 14, 11, 13, 12, 15, 10, 12, 16]) == [9, 10, 10, 11, 12, 12, 12, 13, 14, 15, 16] */}
+{/* check: sorted([6, 8, 7, 9, 5, 8, 10, 7, 8, 6, 9]) == [5, 6, 6, 7, 7, 8, 8, 8, 9, 9, 10] */}
+{/* check: (lambda q, d: [min(d), q(d, 1), q(d, 2), q(d, 3), max(d)])(lambda d, r: (lambda p: d[floor(p) - 1] + (p - floor(p)) * (d[min(floor(p), len(d) - 1)] - d[floor(p) - 1]))(Rational(r * (len(d) + 1), 4)), sorted([9, 12, 10, 14, 11, 13, 12, 15, 10, 12, 16])) == [9, 10, 12, 14, 16] */}
+{/* check: (lambda q, d: [min(d), q(d, 1), q(d, 2), q(d, 3), max(d)])(lambda d, r: (lambda p: d[floor(p) - 1] + (p - floor(p)) * (d[min(floor(p), len(d) - 1)] - d[floor(p) - 1]))(Rational(r * (len(d) + 1), 4)), sorted([6, 8, 7, 9, 5, 8, 10, 7, 8, 6, 9])) == [5, 6, 8, 9, 10] */}
+
+<figure class="figure">
+<svg class="fig" viewBox="0 0 520 200" role="img" aria-label="แผนภาพกล่องสองรูปบนเส้นจำนวนเดียวกัน ถาดในกล่องทึบ 9 10 12 14 16 อยู่ทางขวา ถาดริมหน้าต่าง 5 6 8 9 10 อยู่ทางซ้าย">
+  <rect class="fill-accent" x="232" y="37" width="128" height="26" />
+  <path class="accent" d="M296 37 L296 63" />
+  <path class="accent" d="M200 50 L232 50" />
+  <path class="accent" d="M360 50 L424 50" />
+  <path class="accent" d="M200 42 L200 58" />
+  <path class="accent" d="M424 42 L424 58" />
+  <text class="label-small" x="200" y="26" text-anchor="middle">9</text>
+  <text class="label-small" x="232" y="26" text-anchor="middle">10</text>
+  <text class="label-small" x="296" y="26" text-anchor="middle">12</text>
+  <text class="label-small" x="360" y="26" text-anchor="middle">14</text>
+  <text class="label-small" x="424" y="26" text-anchor="middle">16</text>
+  <text class="label" x="440" y="55">กล่องทึบ</text>
+  <rect class="fill-teal" x="104" y="111" width="96" height="26" />
+  <path class="teal" d="M168 111 L168 137" />
+  <path class="teal" d="M72 124 L104 124" />
+  <path class="teal" d="M200 124 L232 124" />
+  <path class="teal" d="M72 116 L72 132" />
+  <path class="teal" d="M232 116 L232 132" />
+  <text class="label-small" x="72" y="100" text-anchor="middle">5</text>
+  <text class="label-small" x="104" y="100" text-anchor="middle">6</text>
+  <text class="label-small" x="168" y="100" text-anchor="middle">8</text>
+  <text class="label-small" x="200" y="100" text-anchor="middle">9</text>
+  <text class="label-small" x="232" y="100" text-anchor="middle">10</text>
+  <text class="label" x="248" y="129">ริมหน้าต่าง</text>
+  <path class="line" d="M32 166 L488 166" />
+  <path class="line" d="M40 166 L40 172" />
+  <path class="line" d="M72 166 L72 172" />
+  <path class="line" d="M104 166 L104 172" />
+  <path class="line" d="M136 166 L136 172" />
+  <path class="line" d="M168 166 L168 172" />
+  <path class="line" d="M200 166 L200 172" />
+  <path class="line" d="M232 166 L232 172" />
+  <path class="line" d="M264 166 L264 172" />
+  <path class="line" d="M296 166 L296 172" />
+  <path class="line" d="M328 166 L328 172" />
+  <path class="line" d="M360 166 L360 172" />
+  <path class="line" d="M392 166 L392 172" />
+  <path class="line" d="M424 166 L424 172" />
+  <path class="line" d="M456 166 L456 172" />
+  <text class="label-small" x="40" y="188" text-anchor="middle">4</text>
+  <text class="label-small" x="72" y="188" text-anchor="middle">5</text>
+  <text class="label-small" x="104" y="188" text-anchor="middle">6</text>
+  <text class="label-small" x="136" y="188" text-anchor="middle">7</text>
+  <text class="label-small" x="168" y="188" text-anchor="middle">8</text>
+  <text class="label-small" x="200" y="188" text-anchor="middle">9</text>
+  <text class="label-small" x="232" y="188" text-anchor="middle">10</text>
+  <text class="label-small" x="264" y="188" text-anchor="middle">11</text>
+  <text class="label-small" x="296" y="188" text-anchor="middle">12</text>
+  <text class="label-small" x="328" y="188" text-anchor="middle">13</text>
+  <text class="label-small" x="360" y="188" text-anchor="middle">14</text>
+  <text class="label-small" x="392" y="188" text-anchor="middle">15</text>
+  <text class="label-small" x="424" y="188" text-anchor="middle">16</text>
+  <text class="label-small" x="456" y="188" text-anchor="middle">17</text>
+</svg>
+<figcaption>ความสูงของต้นถั่วงอกหลังเพาะ 5 วัน (เซนติเมตร) ถาดละ 11 ต้น</figcaption>
+</figure>
+
+## เทียบอะไรบ้าง
+
+มองรูปแล้วต้องเทียบสองเรื่องเสมอ
+
+- **ตำแหน่ง** ดูมัธยฐาน ชุดไหนมีมัธยฐานมากกว่า และกล่องของสองชุดทับกันมากน้อยแค่ไหน
+- **การกระจาย** ดูพิสัยระหว่างควอร์ไทล์และพิสัย ชุดไหนข้อมูลอยู่ใกล้กันกว่า หรือสม่ำเสมอกว่า
+
+แล้วเขียนข้อสรุปเป็นประโยคที่มีตัวเลขจากรูปรองรับ ไม่ใช่แค่บอกว่าชุดไหนดีกว่า
+
+<Example n={2}>
+จากรูปของถั่วงอก เทียบตำแหน่งและการกระจายของสองถาด แล้วเขียนข้อสรุป
+
+<Steps reveal>
+1. ตำแหน่ง มัธยฐานของถาดในกล่องทึบคือ 12 เซนติเมตร ของถาดริมหน้าต่างคือ 8 เซนติเมตร ต่างกัน 4 เซนติเมตร
+2. ดูการทับกัน $Q_1$ ของถาดในกล่องทึบคือ 10 ซึ่งมากกว่า $Q_3$ ของถาดริมหน้าต่างซึ่งเป็น 9 กล่องสองใบจึงไม่ทับกันเลย
+3. การกระจาย พิสัยระหว่างควอร์ไทล์ $14 - 10 = 4$ กับ $9 - 6 = 3$ และพิสัย $16 - 9 = 7$ กับ $10 - 5 = 5$ ถาดในกล่องทึบกระจายมากกว่าเล็กน้อย
+4. ข้อสรุป ต้นถั่วงอกในกล่องทึบสูงกว่าอย่างชัดเจน ประมาณสามในสี่ของต้นในกล่องทึบสูงตั้งแต่ 10 เซนติเมตรขึ้นไป ขณะที่ประมาณสามในสี่ของต้นริมหน้าต่างสูงไม่เกิน 9 เซนติเมตร
+</Steps>
+</Example>
+
+{/* check: [12 - 8, 14 - 10, 9 - 6, 16 - 9, 10 - 5] == [4, 4, 3, 7, 5] */}
+{/* check: 10 > 9 */}
+
+ข้อสรุปนี้ตรงกับที่นักชีววิทยารู้กันดี ต้นอ่อนที่อยู่ในที่มืดจะยืดตัวสูงเร็วเพื่อหาแสง ถั่วงอกที่ขายในตลาดจึงเพาะในที่มืด
+
+## ข้อมูลที่มัธยฐานใกล้กัน
+
+บางครั้งมัธยฐานของสองชุดแทบเท่ากัน แต่ข้อมูลต่างกันมาก
+
+<Example n={3}>
+ครูสอบคณิตศาสตร์ เต็ม 50 คะแนน สองห้อง ห้อง ม.3/1 มีนักเรียน 40 คน ห้อง ม.3/2 มีนักเรียน 32 คน ได้แผนภาพกล่องตามรูป เทียบสองห้อง และตอบว่าห้องไหนมีนักเรียนที่ได้ไม่เกิน 24 คะแนนมากกว่ากัน
+
+<figure class="figure">
+<svg class="fig" viewBox="0 0 520 200" role="img" aria-label="แผนภาพกล่องสองรูป ม.3/1 ค่าต่ำสุด 12 Q1 24 Q2 30 Q3 36 ค่าสูงสุด 47 ม.3/2 ค่าต่ำสุด 20 Q1 27 Q2 31 Q3 33 ค่าสูงสุด 40">
+  <rect class="fill-accent" x="185.6" y="37" width="124.8" height="26" />
+  <path class="accent" d="M248 37 L248 63" />
+  <path class="accent" d="M60.8 50 L185.6 50" />
+  <path class="accent" d="M310.4 50 L424.8 50" />
+  <path class="accent" d="M60.8 42 L60.8 58" />
+  <path class="accent" d="M424.8 42 L424.8 58" />
+  <text class="label-small" x="60.8" y="26" text-anchor="middle">12</text>
+  <text class="label-small" x="185.6" y="26" text-anchor="middle">24</text>
+  <text class="label-small" x="248" y="26" text-anchor="middle">30</text>
+  <text class="label-small" x="310.4" y="26" text-anchor="middle">36</text>
+  <text class="label-small" x="424.8" y="26" text-anchor="middle">47</text>
+  <text class="label" x="440" y="55">ม.3/1</text>
+  <rect class="fill-teal" x="216.8" y="111" width="62.4" height="26" />
+  <path class="teal" d="M258.4 111 L258.4 137" />
+  <path class="teal" d="M144 124 L216.8 124" />
+  <path class="teal" d="M279.2 124 L352 124" />
+  <path class="teal" d="M144 116 L144 132" />
+  <path class="teal" d="M352 116 L352 132" />
+  <text class="label-small" x="144" y="100" text-anchor="middle">20</text>
+  <text class="label-small" x="216.8" y="100" text-anchor="middle">27</text>
+  <text class="label-small" x="256" y="100" text-anchor="end">31</text>
+  <text class="label-small" x="282" y="100" text-anchor="start">33</text>
+  <text class="label-small" x="352" y="100" text-anchor="middle">40</text>
+  <text class="label" x="368" y="129">ม.3/2</text>
+  <path class="line" d="M32 166 L464 166" />
+  <path class="line" d="M40 166 L40 172" />
+  <path class="line" d="M92 166 L92 172" />
+  <path class="line" d="M144 166 L144 172" />
+  <path class="line" d="M196 166 L196 172" />
+  <path class="line" d="M248 166 L248 172" />
+  <path class="line" d="M300 166 L300 172" />
+  <path class="line" d="M352 166 L352 172" />
+  <path class="line" d="M404 166 L404 172" />
+  <path class="line" d="M456 166 L456 172" />
+  <text class="label-small" x="40" y="188" text-anchor="middle">10</text>
+  <text class="label-small" x="92" y="188" text-anchor="middle">15</text>
+  <text class="label-small" x="144" y="188" text-anchor="middle">20</text>
+  <text class="label-small" x="196" y="188" text-anchor="middle">25</text>
+  <text class="label-small" x="248" y="188" text-anchor="middle">30</text>
+  <text class="label-small" x="300" y="188" text-anchor="middle">35</text>
+  <text class="label-small" x="352" y="188" text-anchor="middle">40</text>
+  <text class="label-small" x="404" y="188" text-anchor="middle">45</text>
+  <text class="label-small" x="456" y="188" text-anchor="middle">50</text>
+</svg>
+<figcaption>คะแนนสอบคณิตศาสตร์ เต็ม 50 คะแนน ของสองห้อง ตัวเลขเหนือรูปคือค่าห้าค่า</figcaption>
+</figure>
+
+<Steps reveal>
+1. ตำแหน่ง มัธยฐาน 30 กับ 31 คะแนน ต่างกันแค่ 1 คะแนน สองห้องได้คะแนนกลางๆ พอกัน
+2. การกระจาย พิสัยระหว่างควอร์ไทล์ของ ม.3/1 คือ $36 - 24 = 12$ ของ ม.3/2 คือ $33 - 27 = 6$ พิสัยคือ $47 - 12 = 35$ กับ $40 - 20 = 20$ คะแนนของ ม.3/1 กระจายกว่ามาก ส่วน ม.3/2 สม่ำเสมอกว่า
+3. ห้อง ม.3/1 มี $Q_1 = 24$ นักเรียนประมาณหนึ่งในสี่ได้ไม่เกิน 24 คะแนน คิดเป็นประมาณ $\tfrac{40}{4} = 10$ คน
+4. ห้อง ม.3/2 มี $Q_1 = 27$ มากกว่า 24 คนที่ได้ไม่เกิน 24 จึงอยู่ในกลุ่มหนึ่งในสี่ล่างซึ่งมีประมาณ $\tfrac{32}{4} = 8$ คน และเป็นแค่บางคนในกลุ่มนั้น จึงน้อยกว่า 8 คน
+5. ข้อสรุป ห้อง ม.3/1 มีนักเรียนที่ได้ไม่เกิน 24 คะแนนมากกว่า แม้มัธยฐานของสองห้องจะใกล้กัน
+</Steps>
+</Example>
+
+{/* check: [31 - 30, 36 - 24, 33 - 27, 47 - 12, 40 - 20] == [1, 12, 6, 35, 20] */}
+{/* check: [Rational(40, 4), Rational(32, 4)] == [10, 8] */}
+
+ขั้นที่ 3 และ 4 ใช้จำนวนนักเรียนของแต่ละห้องด้วย แผนภาพกล่องบอก**สัดส่วน**ของข้อมูล ไม่ได้บอกจำนวน ถ้าสองห้องมีนักเรียนไม่เท่ากัน ร้อยละ 25 ของแต่ละห้องก็เป็นจำนวนคนไม่เท่ากัน
+
+<Think>
+เพื่อนดูแผนภาพกล่องของสองห้องแล้วสรุปว่า ม.3/1 เรียนเก่งกว่า เพราะคะแนนสูงสุด 47 สูงกว่า ม.3/2 ซึ่งได้สูงสุดแค่ 40 เพื่อนสรุปถูกไหม
+
+<Reveal>
+ไม่ถูก คะแนนสูงสุดเป็นของนักเรียนคนเดียว บอกอะไรเกี่ยวกับทั้งห้องไม่ได้ ถ้าดูคะแนนต่ำสุดแบบเดียวกัน ม.3/1 ได้แค่ 12 ต่ำกว่า ม.3/2 ซึ่งได้ 20 ก็จะสรุปกลับกันได้ การเทียบทั้งชุดต้องดูมัธยฐานซึ่งเกือบเท่ากัน และดูการกระจาย ข้อสรุปที่ถูกคือสองห้องได้คะแนนกลางๆ พอกัน แต่ ม.3/1 มีทั้งคนที่ได้สูงมากและคนที่ได้ต่ำมาก ส่วน ม.3/2 ได้ใกล้ๆ กันทั้งห้อง
+</Reveal>
+</Think>
+
+## สิ่งที่แผนภาพกล่องไม่บอก
+
+แผนภาพกล่องย่อข้อมูลเหลือห้าค่า รายละเอียดบางอย่างจึงหายไป
+
+- ไม่บอกจำนวนข้อมูล ต้องบอกแยกไว้ เช่นในคำบรรยายใต้รูป
+- ไม่บอกว่าข้อมูลในแต่ละส่วนกองกันอย่างไร มีช่องว่างหรือมีกลุ่มย่อยไหม ถ้าข้อมูลมีไม่มาก ควรดูแผนภาพจุดหรือแผนภาพต้นใบประกอบ
+- ไม่บอกค่าเฉลี่ย
+
+แผนภาพกล่องจึงเหมาะที่สุดเมื่อข้อมูลมีมาก และต้องการเทียบหลายชุดพร้อมกันอย่างรวดเร็ว
+
+## สรุป
+
+- เทียบข้อมูลสองชุดต้องวาดแผนภาพกล่องบนเส้นจำนวนเดียวกัน
+- เทียบตำแหน่งด้วยมัธยฐานและการทับกันของกล่อง
+- เทียบการกระจายด้วยพิสัยระหว่างควอร์ไทล์และพิสัย ชุดที่กล่องแคบกว่าสม่ำเสมอกว่า
+- ข้อสรุปต้องมีตัวเลขรองรับ และต้องใช้คำว่าประมาณ
+- แผนภาพกล่องบอกสัดส่วน ไม่บอกจำนวน ถ้าสองชุดมีจำนวนข้อมูลต่างกันต้องคิดจำนวนแยก
+- อย่าเทียบทั้งชุดด้วยค่าสูงสุดหรือค่าต่ำสุดเพียงค่าเดียว

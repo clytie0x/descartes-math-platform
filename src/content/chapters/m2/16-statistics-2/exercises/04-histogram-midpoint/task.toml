@@ -1,0 +1,67 @@
+title = "จุดกึ่งกลางของชั้นที่สูงที่สุด"
+level = 2
+type = "number"
+unit = "นาที"
+answer = "34.5"
+truth = "(Rational('29.5') + Rational('39.5')) / 2"
+hints = ['หาแท่งที่สูงที่สุดก่อน แล้วอ่านขอบซ้ายและขอบขวาของแท่งนั้นจากแกนนอน', 'จุดกึ่งกลางชั้น คือ ขอบล่างบวกขอบบน หารสอง']
+statement = '''
+ฮิสโทแกรมแสดงเวลาที่นักเรียน 30 คนใช้ทำการบ้านต่อวัน ตัวเลขบนแกนนอนคือขอบของแต่ละชั้น ชั้นที่มีความถี่มากที่สุดมีจุดกึ่งกลางชั้นเท่าใด
+
+<figure class="figure">
+<svg class="fig" viewBox="0 0 440 255" role="img" aria-label="ฮิสโทแกรมเวลาทำการบ้านต่อวันของนักเรียน 30 คน ขอบของชั้นบนแกนนอนคือ 9.5 19.5 29.5 39.5 49.5 59.5 69.5 ความถี่ของแท่งจากซ้ายไปขวาคือ 2 5 8 7 5 3">
+  <line class="grid" x1="66" y1="180.5" x2="414" y2="180.5" />
+  <line class="grid" x1="66" y1="161" x2="414" y2="161" />
+  <text class="label-small" x="60" y="165" text-anchor="end">2</text>
+  <line class="grid" x1="66" y1="141.5" x2="414" y2="141.5" />
+  <line class="grid" x1="66" y1="122" x2="414" y2="122" />
+  <text class="label-small" x="60" y="126" text-anchor="end">4</text>
+  <line class="grid" x1="66" y1="102.5" x2="414" y2="102.5" />
+  <line class="grid" x1="66" y1="83" x2="414" y2="83" />
+  <text class="label-small" x="60" y="87" text-anchor="end">6</text>
+  <line class="grid" x1="66" y1="63.5" x2="414" y2="63.5" />
+  <line class="grid" x1="66" y1="44" x2="414" y2="44" />
+  <text class="label-small" x="60" y="48" text-anchor="end">8</text>
+  <text class="label-small" x="60" y="204" text-anchor="end">0</text>
+  <rect class="fill-accent" x="72" y="161" width="56" height="39" />
+  <text class="label-small" x="100" y="155" text-anchor="middle">2</text>
+  <rect class="fill-accent" x="128" y="102.5" width="56" height="97.5" />
+  <text class="label-small" x="156" y="96.5" text-anchor="middle">5</text>
+  <rect class="fill-accent" x="184" y="44" width="56" height="156" />
+  <text class="label-small" x="212" y="38" text-anchor="middle">8</text>
+  <rect class="fill-accent" x="240" y="63.5" width="56" height="136.5" />
+  <text class="label-small" x="268" y="57.5" text-anchor="middle">7</text>
+  <rect class="fill-accent" x="296" y="102.5" width="56" height="97.5" />
+  <text class="label-small" x="324" y="96.5" text-anchor="middle">5</text>
+  <rect class="fill-accent" x="352" y="141.5" width="56" height="58.5" />
+  <text class="label-small" x="380" y="135.5" text-anchor="middle">3</text>
+  <text class="label-small" x="72" y="218" text-anchor="middle">9.5</text>
+  <text class="label-small" x="128" y="218" text-anchor="middle">19.5</text>
+  <text class="label-small" x="184" y="218" text-anchor="middle">29.5</text>
+  <text class="label-small" x="240" y="218" text-anchor="middle">39.5</text>
+  <text class="label-small" x="296" y="218" text-anchor="middle">49.5</text>
+  <text class="label-small" x="352" y="218" text-anchor="middle">59.5</text>
+  <text class="label-small" x="408" y="218" text-anchor="middle">69.5</text>
+  <line class="line" x1="66" y1="32" x2="66" y2="200" />
+  <line class="line" x1="66" y1="200" x2="422" y2="200" />
+  <text class="label" x="240" y="242" text-anchor="middle">เวลาทำการบ้านต่อวัน (นาที)</text>
+  <text class="label" x="66" y="24">จำนวนคน</text>
+</svg>
+</figure>
+'''
+solution = '''
+1. แท่งที่สูงที่สุดมีความถี่ 8 อยู่ระหว่างขอบ 29.5 กับ 39.5 คือชั้น 30 ถึง 39 นาที
+2. จุดกึ่งกลางชั้น $\tfrac{29.5 + 39.5}{2} = 34.5$ นาที หรือคิดจากขีดจำกัด $\tfrac{30 + 39}{2} = 34.5$ ได้เท่ากัน
+'''
+
+[[wrong]]
+answer = "8"
+message = "8 คือความถี่ของชั้นนั้น ข้อนี้ถามจุดกึ่งกลางชั้น ซึ่งเป็นค่าบนแกนนอน"
+
+[[wrong]]
+answer = "35"
+message = "(30 + 40) ÷ 2 ใช้ 40 ซึ่งเป็นขีดจำกัดล่างของชั้นถัดไป ชั้นนี้คือ 30 ถึง 39 หรือใช้ขอบ 29.5 กับ 39.5"
+
+[[wrong]]
+answer = "44.5"
+message = "นี่คือจุดกึ่งกลางของชั้น 40 ถึง 49 ซึ่งมีความถี่ 7 แท่งที่สูงที่สุดคือแท่งก่อนหน้า"

@@ -1,0 +1,6 @@
+---
+/* กล่องเตือน kind เป็น note tip หรือ warning */
+interface Props { kind?: "note" | "tip" | "warning"; title: string }
+const { kind = "note", title } = Astro.props;
+---
+<div class={`adm adm-${kind}`} role="note"><p class="adm-title">{title}</p><slot /></div>

@@ -1,0 +1,23 @@
+title = "พารามิเตอร์ตั้งฉาก"
+level = 2
+type = "number"
+track = "adv"
+answer = "4"
+truth = '''solve(3*x-12,x)[0]'''
+hints = ['ตั้งดอตโปรดักต์เท่าศูนย์แล้วแก้สมการ']
+statement = '''
+หา $x$ ที่ทำให้ $\langle x,2\rangle$ ตั้งฉากกับ $\langle3,-6\rangle$
+'''
+solution = '''
+เวกเตอร์ที่ไม่เป็นศูนย์ตั้งฉากกันก็ต่อเมื่อดอตโปรดักต์เป็นศูนย์
+
+$\langle x,2\rangle\cdot\langle3,-6\rangle=3x+2(-6)=3x-12$
+
+ตั้ง $3x-12=0$ ได้ $x=4$
+
+ตรวจ $\langle4,2\rangle\cdot\langle3,-6\rangle=12-12=0$ และเวกเตอร์ทั้งสองไม่เป็นศูนย์ จึงตั้งฉากจริง
+'''
+
+[[wrong]]
+answer = "-4"
+message = "ดอตโปรดักต์เป็น 3x − 12 ไม่ใช่ 3x + 12"

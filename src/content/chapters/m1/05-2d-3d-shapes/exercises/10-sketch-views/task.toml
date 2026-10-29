@@ -1,0 +1,59 @@
+title = "วาดภาพสามด้านในกระดาษ"
+level = 2
+type = "self"
+checks = [
+  "[Max(3, 1), Max(1, 0), Max(2, 1)] == [3, 1, 2]",
+  "[Max(1, 0, 1), Max(3, 1, 2)] == [1, 3]",
+  "3 + 1 + 2 + 1 + 0 + 1 == 8",
+]
+hints = ['ภาพด้านหน้าใช้ตัวเลขที่มากที่สุดของแต่ละหลัก ภาพด้านข้างใช้ตัวเลขที่มากที่สุดของแต่ละแถว โดยแถวหน้าอยู่ทางซ้าย']
+statement = '''
+ภาพด้านบนของรูปที่ประกอบจากลูกบาศก์เป็นดังนี้ วาดภาพด้านหน้า ภาพด้านข้างที่มองจากทางขวา และภาพด้านบนลงในกระดาษตาราง แล้วบอกจำนวนลูกบาศก์ทั้งหมด เสร็จแล้วเปิดเฉลยเทียบตามเกณฑ์
+
+<figure class="figure">
+  <svg class="fig" viewBox="-29 -4 186 124" role="img" aria-label="ภาพด้านบนสองแถวสามหลัก แถวหลังมีตัวเลข 3 1 2 แถวหน้ามีตัวเลข 1 ช่องว่าง 1">
+    <rect class="fill-teal" x="4" y="4" width="40" height="40" />
+    <text class="label" x="24" y="29" text-anchor="middle">3</text>
+    <rect class="fill-teal" x="44" y="4" width="40" height="40" />
+    <text class="label" x="64" y="29" text-anchor="middle">1</text>
+    <rect class="fill-teal" x="84" y="4" width="40" height="40" />
+    <text class="label" x="104" y="29" text-anchor="middle">2</text>
+    <rect class="fill-teal" x="4" y="44" width="40" height="40" />
+    <text class="label" x="24" y="69" text-anchor="middle">1</text>
+    <rect class="fill-teal" x="84" y="44" width="40" height="40" />
+    <text class="label" x="104" y="69" text-anchor="middle">1</text>
+    <text class="label-small" x="64" y="108" text-anchor="middle">ด้านหน้า</text>
+  </svg>
+</figure>
+'''
+solution = '''
+<figure class="figure">
+  <svg class="fig" viewBox="2 30 316 132" role="img" aria-label="เฉลย ภาพด้านหน้าสูง 3 1 2 ภาพด้านข้างสูง 1 3 และภาพด้านบนห้าช่อง">
+    <rect class="fill-accent" x="10" y="98" width="30" height="30" />
+    <rect class="fill-accent" x="10" y="68" width="30" height="30" />
+    <rect class="fill-accent" x="10" y="38" width="30" height="30" />
+    <rect class="fill-accent" x="40" y="98" width="30" height="30" />
+    <rect class="fill-accent" x="70" y="98" width="30" height="30" />
+    <rect class="fill-accent" x="70" y="68" width="30" height="30" />
+    <text class="label" x="55" y="150" text-anchor="middle">ด้านหน้า</text>
+    <rect class="fill-violet" x="130" y="98" width="30" height="30" />
+    <rect class="fill-violet" x="160" y="98" width="30" height="30" />
+    <rect class="fill-violet" x="160" y="68" width="30" height="30" />
+    <rect class="fill-violet" x="160" y="38" width="30" height="30" />
+    <text class="label" x="160" y="150" text-anchor="middle">ด้านข้าง</text>
+    <rect class="fill-teal" x="220" y="68" width="30" height="30" />
+    <rect class="fill-teal" x="250" y="68" width="30" height="30" />
+    <rect class="fill-teal" x="280" y="68" width="30" height="30" />
+    <rect class="fill-teal" x="220" y="98" width="30" height="30" />
+    <rect class="fill-teal" x="280" y="98" width="30" height="30" />
+    <text class="label" x="265" y="150" text-anchor="middle">ด้านบน</text>
+  </svg>
+</figure>
+
+ตรวจของตัวเองทีละข้อ ได้ครบสี่ข้อถือว่าผ่าน
+
+- ภาพด้านหน้ามีสามหลัก สูง 3 1 2 จากซ้ายไปขวา
+- ภาพด้านข้างมีสองหลัก แถวหน้าอยู่ทางซ้ายสูง 1 แถวหลังอยู่ทางขวาสูง 3
+- ภาพด้านบนมี 5 ช่อง แถวหลังเต็มสามช่อง แถวหน้ามีช่องซ้ายกับช่องขวา ช่องกลางว่าง
+- ใช้ลูกบาศก์ $3 + 1 + 2 + 1 + 1 = 8$ ลูก
+'''

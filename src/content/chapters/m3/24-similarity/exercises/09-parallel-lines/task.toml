@@ -1,0 +1,12 @@
+title = '''เส้นขนานในสามเหลี่ยม'''
+level = 3
+type = "number"
+statement = '''ในสามเหลี่ยม ABC จุด D อยู่บน AB และ E อยู่บน AC โดย $DE\parallel BC$ ให้ $AD=3$ $DB=5$ $AE=6$ หา $EC$'''
+solution = '''$AB=8$ จากความคล้าย $AC/AE=AB/AD=8/3$ ได้ $AC=16$ ดังนั้น $EC=16-6=10$'''
+hints = ['''หาความยาว AB ทั้งด้านก่อน แล้วหัก AE ออกจาก AC''']
+answer = '''10'''
+truth = '''6*Rational(3+5,3)-6'''
+
+[[wrong]]
+answer = '''16'''
+message = '''16 คือ AC ทั้งด้าน แต่ถามส่วน EC ต้องลบ AE'''

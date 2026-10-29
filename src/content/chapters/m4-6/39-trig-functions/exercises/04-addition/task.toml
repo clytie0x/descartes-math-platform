@@ -1,0 +1,19 @@
+title = "ค่ามุมผลบวก"
+level = 2
+type = "number"
+statement = '''หา $\cos75^\circ$ แบบแน่นอน'''
+solution = '''
+แยก $75^\circ = 45^\circ + 30^\circ$ แล้วใช้สูตร $\cos(A + B) = \cos A\cos B - \sin A\sin B$
+
+$\cos 75^\circ = \cos 45^\circ\cos 30^\circ - \sin 45^\circ\sin 30^\circ = \tfrac{\sqrt{2}}{2} \cdot \tfrac{\sqrt{3}}{2} - \tfrac{\sqrt{2}}{2} \cdot \tfrac{1}{2} = \tfrac{\sqrt{6}}{4} - \tfrac{\sqrt{2}}{4}$
+
+จึงได้ $\cos 75^\circ = \tfrac{\sqrt{6} - \sqrt{2}}{4}$ ประมาณ $0.259$ เป็นบวกและเล็ก สมเหตุสมผลกับมุมที่เกือบเป็นมุมฉาก
+'''
+answer = "(sqrt(6)-sqrt(2))/4"
+truth = "cos(5*pi/12)"
+track = "adv"
+hints = ["แยกเจ็ดสิบห้าเป็นสี่สิบห้าบวกสามสิบ", "สูตรโคไซน์ผลบวกใช้ผลคูณโคไซน์ลบผลคูณไซน์"]
+
+[[wrong]]
+answer = "(sqrt(6)+sqrt(2))/4"
+message = "โคไซน์ของมุมผลบวกใช้ลบผลคูณไซน์ เครื่องหมายบวกจะเป็นค่าไซน์เจ็ดสิบห้าองศา"

@@ -1,0 +1,40 @@
+title = "มุมภายนอกที่เป็นนิพจน์"
+level = 2
+type = "number"
+label = '$A\hat{C}D =$'
+unit = "องศา"
+answer = "75"
+truth = "(5*x - 25).subs(x, solve(Eq((x + 10) + (2*x + 5), 5*x - 25), x)[0])"
+hints = ['มุมภายนอก $A\hat{C}D$ เท่ากับผลบวกของมุมภายในที่ไม่ใช่มุมประชิดของมัน คือ $B\hat{A}C$ กับ $A\hat{B}C$', 'ตั้งสมการ $(x + 10) + (2x + 5) = 5x - 25$ หาค่า $x$ แล้วแทนค่ากลับ']
+statement = '''
+รูปสามเหลี่ยม $ABC$ มี $B\hat{A}C = (x + 10)^\circ$ และ $A\hat{B}C = (2x + 5)^\circ$ ต่อ $\overline{BC}$ ออกไปถึง $D$ ได้ $A\hat{C}D = (5x - 25)^\circ$ จงหาขนาดของ $A\hat{C}D$
+
+<figure class="figure">
+<svg class="fig" viewBox="0 0 360 205" role="img" aria-label="รูปสามเหลี่ยม ABC ต่อด้าน BC ออกไปถึง D มุม A มีขนาด x บวก 10 องศา มุม B มีขนาด 2x บวก 5 องศา มุมภายนอก ACD มีขนาด 5x ลบ 25 องศา">
+  <path class="fill-violet" d="M140 170 L170 170 A30 30 0 0 0 147.8 141 Z" />
+  <path class="fill-accent" d="M172.9 47.1 L153.1 66.9 A28 28 0 0 0 165.7 74.1 Z" />
+  <path class="fill-teal" d="M50 170 L80 170 A30 30 0 0 0 71.2 148.8 Z" />
+  <path class="thin" d="M144.7 152.6 A18 18 0 0 0 122 170" />
+  <path class="line" d="M172.9 47.1 L50 170 L140 170 Z" />
+  <line class="line" x1="140" y1="170" x2="340" y2="170" />
+  <circle class="dot" cx="340" cy="170" r="3.5" />
+  <text class="label-math" x="172.9" y="34.1" text-anchor="middle">A</text>
+  <text class="label-math" x="38" y="185" text-anchor="middle">B</text>
+  <text class="label-math" x="140" y="197" text-anchor="middle">C</text>
+  <text class="label-math" x="340" y="197" text-anchor="middle">D</text>
+</svg>
+</figure>
+'''
+solution = '''
+1. มุมภายนอกเท่ากับผลบวกของมุมภายในที่ไม่ใช่มุมประชิด $(x + 10) + (2x + 5) = 5x - 25$
+2. $3x + 15 = 5x - 25$ ได้ $40 = 2x$ จึงได้ $x = 20$
+3. $A\hat{C}D = 5(20) - 25 = 75^\circ$ ตรวจ $B\hat{A}C + A\hat{B}C = 30^\circ + 45^\circ = 75^\circ$
+'''
+
+[[wrong]]
+answer = "20"
+message = "20 คือค่า x ข้อนี้ถามขนาดของมุม ACD ให้แทน x = 20 ใน 5x − 25"
+
+[[wrong]]
+answer = "105"
+message = "105° คือมุมภายใน ACB ซึ่งเป็นมุมประชิด ข้อนี้ถามมุมภายนอก ACD"

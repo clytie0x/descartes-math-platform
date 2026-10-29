@@ -1,0 +1,70 @@
+title = "อ่านแผนภาพจุด"
+level = 1
+type = "number"
+unit = "คน"
+answer = "8"
+truth = "4 + 2 + 1 + 1"
+hints = ['อย่างน้อย 2 ครั้ง คือ 2 ครั้งขึ้นไป รวม 2 ด้วย', 'นับจุดเหนือ 2 3 4 5 และ 6 แล้วบวกกัน']
+statement = '''
+ครูประจำชั้นจดว่าในเดือนนี้นักเรียน 20 คนมาสายคนละกี่ครั้ง แล้ววาดเป็นแผนภาพจุด มีนักเรียนกี่คนที่มาสายอย่างน้อย 2 ครั้ง
+
+<figure class="figure">
+<svg class="fig" viewBox="0 0 440 190" role="img" aria-label="แผนภาพจุดจำนวนครั้งที่นักเรียน 20 คนมาสาย 0 ครั้ง 7 คน 1 ครั้ง 5 คน 2 ครั้ง 4 คน 3 ครั้ง 2 คน 4 ครั้ง 1 คน 6 ครั้ง 1 คน">
+  <line class="line" x1="40" y1="140" x2="410" y2="140" />
+  <line class="line" x1="50" y1="140" x2="50" y2="145" />
+  <text class="label-small" x="50" y="159" text-anchor="middle">0</text>
+  <line class="line" x1="100" y1="140" x2="100" y2="145" />
+  <text class="label-small" x="100" y="159" text-anchor="middle">1</text>
+  <line class="line" x1="150" y1="140" x2="150" y2="145" />
+  <text class="label-small" x="150" y="159" text-anchor="middle">2</text>
+  <line class="line" x1="200" y1="140" x2="200" y2="145" />
+  <text class="label-small" x="200" y="159" text-anchor="middle">3</text>
+  <line class="line" x1="250" y1="140" x2="250" y2="145" />
+  <text class="label-small" x="250" y="159" text-anchor="middle">4</text>
+  <line class="line" x1="300" y1="140" x2="300" y2="145" />
+  <text class="label-small" x="300" y="159" text-anchor="middle">5</text>
+  <line class="line" x1="350" y1="140" x2="350" y2="145" />
+  <text class="label-small" x="350" y="159" text-anchor="middle">6</text>
+  <line class="line" x1="400" y1="140" x2="400" y2="145" />
+  <text class="label-small" x="400" y="159" text-anchor="middle">7</text>
+  <circle class="dot" cx="50" cy="129" r="5.5" />
+  <circle class="dot" cx="50" cy="116" r="5.5" />
+  <circle class="dot" cx="50" cy="103" r="5.5" />
+  <circle class="dot" cx="50" cy="90" r="5.5" />
+  <circle class="dot" cx="50" cy="77" r="5.5" />
+  <circle class="dot" cx="50" cy="64" r="5.5" />
+  <circle class="dot" cx="50" cy="51" r="5.5" />
+  <circle class="dot" cx="100" cy="129" r="5.5" />
+  <circle class="dot" cx="100" cy="116" r="5.5" />
+  <circle class="dot" cx="100" cy="103" r="5.5" />
+  <circle class="dot" cx="100" cy="90" r="5.5" />
+  <circle class="dot" cx="100" cy="77" r="5.5" />
+  <circle class="dot" cx="150" cy="129" r="5.5" />
+  <circle class="dot" cx="150" cy="116" r="5.5" />
+  <circle class="dot" cx="150" cy="103" r="5.5" />
+  <circle class="dot" cx="150" cy="90" r="5.5" />
+  <circle class="dot" cx="200" cy="129" r="5.5" />
+  <circle class="dot" cx="200" cy="116" r="5.5" />
+  <circle class="dot" cx="250" cy="129" r="5.5" />
+  <circle class="dot" cx="350" cy="129" r="5.5" />
+  <text class="label" x="225" y="180" text-anchor="middle">จำนวนครั้งที่มาสาย</text>
+</svg>
+</figure>
+'''
+solution = '''
+อย่างน้อย 2 ครั้งคือ 2 ครั้งขึ้นไป นับจุดเหนือ 2 ได้ 4 จุด เหนือ 3 ได้ 2 จุด เหนือ 4 ได้ 1 จุด เหนือ 5 ไม่มี และเหนือ 6 ได้ 1 จุด รวม $4 + 2 + 1 + 1 = 8$ คน
+
+ตรวจอีกทาง คนที่มาสายน้อยกว่า 2 ครั้งมี $7 + 5 = 12$ คน จึงเหลือ $20 - 12 = 8$ คน
+'''
+
+[[wrong]]
+answer = "4"
+message = "4 คือคนที่มาสาย 2 ครั้งพอดี อย่างน้อย 2 ครั้งต้องรวม 3 4 และ 6 ครั้งด้วย"
+
+[[wrong]]
+answer = "13"
+message = "13 คือคนที่มาสายอย่างน้อย 1 ครั้ง ข้อนี้ถามอย่างน้อย 2 ครั้ง ต้องตัดคนที่มาสาย 1 ครั้งออกด้วย"
+
+[[wrong]]
+answer = "7"
+message = "7 คือคนที่ไม่เคยมาสายเลย ข้อนี้ถามคนที่มาสายตั้งแต่ 2 ครั้งขึ้นไป"

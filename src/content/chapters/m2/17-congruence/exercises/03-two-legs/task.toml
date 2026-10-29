@@ -1,0 +1,28 @@
+title = "ด้านประกอบมุมฉากเท่ากันสองคู่"
+level = 2
+type = "choice"
+choices = ['ด.ม.ด.', 'ม.ด.ม.', 'ด.ด.ด.', 'ฉ.ด.ด.']
+answer = 0
+hints = ['รูปบอกว่ามีอะไรเท่ากันบ้าง นับให้ครบ แล้วดูว่ามุมที่เท่ากันอยู่ตรงไหนเทียบกับด้านที่เท่ากัน']
+statement = '''
+เครื่องหมายในรูปบอกว่า $\hat{M}$ กับ $\hat{Z}$ เป็นมุมฉาก $KM = XZ$ และ $LM = YZ$ ใช้เงื่อนไขใดสรุปว่า $\triangle KLM \cong \triangle XYZ$ ได้ทันทีจากเครื่องหมายในรูป โดยไม่ต้องคำนวณอะไรเพิ่ม
+
+<figure class="figure"><svg class="fig" viewBox="0 0 440 190" role="img" aria-label="รูปสามเหลี่ยมมุมฉาก KLM กับ XYZ มุม M กับมุม Z เป็นมุมฉาก KM กับ XZ มีขีดหนึ่งขีด LM กับ YZ มีสองขีด"><path class="fill-teal" d="M40 40 L170 140 L40 140 Z" /><path class="fill-violet" d="M390 30 L290 160 L290 30 Z" /><path class="line" d="M40 127 L53 127 L53 140" /><line class="line" x1="46" y1="90" x2="34" y2="90" /><line class="line" x1="107.5" y1="146" x2="107.5" y2="134" /><line class="line" x1="102.5" y1="146" x2="102.5" y2="134" /><path class="line" d="M303 30 L303 43 L290 43" /><line class="line" x1="340" y1="36" x2="340" y2="24" /><line class="line" x1="284" y1="97.5" x2="296" y2="97.5" /><line class="line" x1="284" y1="92.5" x2="296" y2="92.5" /><text class="label-math" x="30.7" y="31.7" text-anchor="middle">K</text><text class="label-math" x="185.9" y="152.1" text-anchor="middle">L</text><text class="label-math" x="26.5" y="156.4" text-anchor="middle">M</text><text class="label-math" x="404.3" y="26.7" text-anchor="middle">X</text><text class="label-math" x="283.9" y="181.9" text-anchor="middle">Y</text><text class="label-math" x="279.6" y="22.5" text-anchor="middle">Z</text></svg></figure>
+'''
+solution = '''
+มุมฉาก $\hat{M}$ อยู่ระหว่างด้าน $KM$ กับ $LM$ เพราะสองด้านนี้มีตัวอักษรร่วมคือ $M$ ทำนองเดียวกัน $\hat{Z}$ อยู่ระหว่าง $XZ$ กับ $YZ$ ข้อมูลจึงเป็น ด้าน มุม ด้าน ครบ สรุปได้ด้วย ด.ม.ด.
+
+ส่วน ฉ.ด.ด. ใช้ทันทีไม่ได้ เพราะรูปไม่ได้บอกว่าด้านตรงข้ามมุมฉาก $KL$ กับ $XY$ ยาวเท่ากัน
+'''
+
+[[wrong]]
+answer = 3
+message = "ฉ.ด.ด. ต้องรู้ว่าด้านตรงข้ามมุมฉาก KL กับ XY ยาวเท่ากัน รูปนี้บอกแค่ด้านประกอบมุมฉากสองคู่ ซึ่งมีมุมฉากอยู่ระหว่างพอดี"
+
+[[wrong]]
+answer = 1
+message = "รูปบอกมุมที่เท่ากันแค่คู่เดียวคือมุมฉาก ม.ด.ม. ต้องมีมุมเท่ากันสองคู่"
+
+[[wrong]]
+answer = 2
+message = "รูปไม่ได้บอกว่า KL กับ XY ยาวเท่ากัน ด.ด.ด. ต้องรู้ด้านเท่ากันครบสามคู่"

@@ -1,0 +1,18 @@
+title = "ครอสโปรดักต์"
+level = 1
+type = "self"
+track = "adv"
+checks = ['''Matrix([2,0,0]).cross(Matrix([0,3,0]))==Matrix([0,0,6])''']
+hints = ['ใช้สูตรครอสโปรดักต์แล้วดอตกับตัวตั้งทั้งสอง']
+statement = '''
+คำนวณ $\langle2,0,0\rangle\times\langle0,3,0\rangle$ และตรวจการตั้งฉาก
+'''
+solution = '''
+ใช้สูตร $\mathbf u\times\mathbf v=\langle u_2v_3-u_3v_2,\ u_3v_1-u_1v_3,\ u_1v_2-u_2v_1\rangle$
+
+องค์ประกอบแรก $0(0)-0(3)=0$ องค์ประกอบกลาง $0(0)-2(0)=0$ องค์ประกอบที่สาม $2(3)-0(0)=6$ จึงได้ $\langle0,0,6\rangle$
+
+ตรวจการตั้งฉาก $\langle0,0,6\rangle\cdot\langle2,0,0\rangle=0$ และ $\langle0,0,6\rangle\cdot\langle0,3,0\rangle=0$ ตั้งฉากกับทั้งสองตัว
+
+สองเวกเตอร์นี้คือ $2\mathbf i$ กับ $3\mathbf j$ ผลคูณจึงเป็น $6(\mathbf i\times\mathbf j)=6\mathbf k$ สอดคล้องกัน ถ้าสลับลำดับจะได้ $\langle0,0,-6\rangle$ ทิศกลับตามกฎมือขวา
+'''

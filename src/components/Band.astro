@@ -1,0 +1,18 @@
+---
+/* แถบบอกที่มาบนหน้าบทและหน้าเนื้อหา ว่าตรงกับหนังสือเล่มไหน และอยู่ในสายไหน */
+import { LEVEL_NAMES, type PageNode } from "../lib/site.ts";
+import Glyph from "./Glyph.astro";
+
+interface Props {
+  page: PageNode;
+}
+const { page } = Astro.props;
+const { meta } = page.chapter;
+const levels = page.level ? [page.level] : (meta.levels ?? []);
+---
+<div class={`band topic-${meta.topic}`}>
+  <Glyph topic={meta.topic} />
+  {page.kind === "chapter" ? <span>{meta.grade}</span> : <a href={page.chapter.url}>{meta.title}</a>}
+  <span class="band-book">ตรงกับหนังสือ {meta.book}</span>
+  {levels.map((lv) => <span class={`lvl lvl-${lv}`}>{LEVEL_NAMES[lv]}</span>)}
+</div>

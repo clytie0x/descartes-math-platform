@@ -1,0 +1,17 @@
+title = "ย้อนหาค่าแล้วคำนวณต่อ"
+level = 2
+type = "choice"
+statement = '''ถ้า $(p\wedge\sim q)\to r$ เป็นเท็จ ข้อใดถูกต้อง'''
+solution = '''ตัวเชื่อมหลักคือลูกศรที่เป็นเท็จ จึงบังคับว่าเหตุ $p\wedge\sim q$ จริง และผล $r$ เท็จ เหตุเป็น และ ที่จริง จึงได้ $p$ จริง และ $\sim q$ จริง ดังนั้น $q$ เท็จ ได้ $p=T$ $q=F$ $r=F$ แทนในตัวเลือก $q\vee r=F\vee F=F$ ส่วน $p\wedge r=T\wedge F=F$ และ $r\to q=F\to F=T$ ข้อที่ถูกคือ $r\to q$ เป็นจริง'''
+choices = ['''$q\vee r$ เป็นจริง''', '''$p\wedge r$ เป็นจริง''', '''$r\to q$ เป็นจริง''']
+checks = ["[(p,q,r) for p in [true,false] for q in [true,false] for r in [true,false] if Implies(And(p,Not(q)),r)==false] == [(true,false,false)]", "Or(false,false)==false and And(true,false)==false and Implies(false,false)==true"]
+answer = 2
+hints = ["ลูกศรเท็จได้กรณีเดียว คือเหตุจริงและผลเท็จ", "เหตุ p ∧ ∼q ที่จริงบังคับค่าของ p และ q ต่อได้อีกชั้น"]
+
+[[wrong]]
+answer = 0
+message = "r ต้องเท็จเพราะเป็นผลของลูกศรที่เท็จ และ q ก็เท็จ q ∨ r จึงเท็จ"
+
+[[wrong]]
+answer = 1
+message = "p จริงก็จริง แต่ r ต้องเท็จ และที่มีตัวหนึ่งเท็จจึงเท็จ"

@@ -1,0 +1,90 @@
+---
+import Glyph from "../components/Glyph.astro";
+import TrackSwitch from "../components/TrackSwitch.astro";
+import Layout from "../layouts/Layout.astro";
+import { LEVEL_NAMES, loadSite, shortTitle, TOPIC_NAMES, type Topic } from "../lib/site.ts";
+
+const { config, chapters } = await loadSite();
+const ready = new Map(chapters.map((c) => [c.meta.num, c]));
+const grades = [...new Set(config.chapters.map((c) => c.grade))];
+const first = chapters[0];
+---
+<Layout home>
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">
+        <span class="topic-number"><Glyph topic="number" /></span>
+        <span class="topic-shape"><Glyph topic="shape" /></span>
+        <span class="topic-data"><Glyph topic="data" /></span>
+        คณิตศาสตร์ ม.1 ถึง ม.6
+      </p>
+      <h1 class="hero-title">คณิตที่<em>ลองขยับ</em>ดูได้</h1>
+      <p class="hero-lede">อ่านไล่ทีละบทตามลำดับหนังสือเรียน ทุกเรื่องมีตัวอย่างพร้อมวิธีทำทีละขั้น กราฟที่ลากเล่นได้ และแบบฝึกหัดที่ตรวจคำตอบให้ทันที</p>
+      <div class="hero-actions">
+        {first && <a class="btn btn-primary" href={first.url}>เริ่มบทที่ {first.meta.num}</a>}
+        <a class="btn" href="#map">ดูทุกบท</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-head"><span class="hero-dots"><i></i><i></i><i></i></span><span>ลากจุดสีดำดู</span></div>
+      <svg class="plane" data-hero role="img" aria-label="กราฟพาราโบลา ลากจุดยอดแล้วสมการจะเปลี่ยนตาม"></svg>
+      <div class="hero-readout"><span class="hero-eq"></span><span class="hero-vertex"></span></div>
+    </div>
+  </section>
+
+  <div class="section-head">
+    <h2 id="map">เลือกบทที่จะเรียน</h2>
+    <ul class="legend">
+      {(Object.keys(TOPIC_NAMES) as Topic[]).map((t) => <li class={`topic-${t}`}><Glyph topic={t} />{TOPIC_NAMES[t]}</li>)}
+    </ul>
+  </div>
+
+  <p>ชื่อบทและลำดับบทตรงกับหนังสือเรียนคณิตศาสตร์ของ สสวท. ฉบับปรับปรุง 2560 ทุกบทบอกไว้ว่าตรงกับเล่มไหน บทที่ยังเป็นเส้นประคือบทที่กำลังเขียน</p>
+
+  <div class="course-map">
+    {grades.map((grade) => {
+      const list = config.chapters.filter((c) => c.grade === grade);
+      const count = list.filter((c) => ready.has(c.num)).length;
+      return (
+        <section class="grade">
+          <h3 class="grade-title"><span class="grade-name">{grade}</span><span class="grade-count">{count} จาก {list.length} บทพร้อมอ่าน</span></h3>
+          <ol class="tiles">
+            {list.map((ch) => {
+              const node = ready.get(ch.num);
+              const inner = (
+                <Fragment>
+                  <span class="tile-head"><span class="tile-num">{ch.num}</span><Glyph topic={ch.topic} /></span>
+                  <span class="tile-title">{shortTitle(ch.title)}</span>
+                  <span class="tile-sum">{ch.summary}</span>
+                  {ch.levels && <span class="tile-foot">{ch.levels.map((lv) => <span class={`lvl lvl-${lv}`}>{LEVEL_NAMES[lv]}</span>)}</span>}
+                  <span class="tile-meta">{node ? `${node.pages.length} หน้า` : "กำลังเขียน"}</span>
+                </Fragment>
+              );
+              return (
+                <li class:list={["tile", `topic-${ch.topic}`, node ? "is-ready" : "is-planned"]} data-levels={ch.levels?.join(" ")}>
+                  {node ? <a href={node.url}>{inner}</a> : <div>{inner}</div>}
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+      );
+    })}
+  </div>
+
+  <h2 id="tracks">ม.ปลาย สายพื้นฐานกับสายเพิ่มเติม</h2>
+
+  <p>ม.ปลาย ทุกคนเรียนคณิตพื้นฐาน ส่วนสายวิทย์เรียนคณิตเพิ่มเติมด้วย หลายเรื่องซ้ำกัน เช่น เซต ตรรกศาสตร์ ความน่าจะเป็น สถิติ เว็บนี้จึงรวมไว้เป็นบทเดียว แล้วติดป้ายบอกว่าบทไหนและหน้าไหนอยู่ในสายไหน</p>
+
+  <p>เลือกสายของตัวเองไว้ เมนูซ้ายจะซ่อนบทและหน้าที่ไม่อยู่ในสายนั้น และปุ่มถัดไปจะพาไปตามลำดับบทในหนังสือของสายนั้น เปลี่ยนได้ตลอด</p>
+
+  <TrackSwitch />
+
+  <h2 id="how">อ่านยังไงให้ได้ผล</h2>
+
+  <ol class="howto">
+    <li><strong>คิดก่อนเปิดเฉลย</strong>ตัวอย่างทุกข้อซ่อนวิธีทำไว้ทีละขั้น ลองทำขั้นต่อไปในกระดาษก่อน แล้วค่อยกดดู</li>
+    <li><strong>ลองขยับกราฟ</strong>กราฟที่มีแถบเลื่อน ให้เดาก่อนว่ากราฟจะเปลี่ยนยังไง แล้วค่อยเลื่อนดูว่าเดาถูกไหม</li>
+    <li><strong>ทำแบบฝึกหัดท้ายบท</strong>เว็บตรวจคำตอบให้ทันที ตอบผิดบ่อยแบบไหน จะบอกว่าน่าจะพลาดตรงไหน</li>
+  </ol>
+</Layout>

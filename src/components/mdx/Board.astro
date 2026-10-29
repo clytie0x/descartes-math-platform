@@ -1,0 +1,10 @@
+---
+/* กราฟลากได้ name ต้องตรงกับชื่อใน src/scripts/boards label คือคำอธิบายสำหรับโปรแกรมอ่านหน้าจอ */
+interface Props { name: string; label: string; caption?: string }
+const { name, label, caption } = Astro.props;
+const hasSlot = Astro.slots.has("default");
+---
+<figure class="figure">
+  <div class="board" data-board={name} role="img" aria-label={label}></div>
+  {(caption || hasSlot) && <figcaption>{caption}<slot /></figcaption>}
+</figure>

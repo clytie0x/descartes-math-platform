@@ -1,0 +1,12 @@
+title = "นับแถวจริง"
+level = 2
+type = "number"
+statement = '''ในตารางสามตัวแปร $p,q,r$ รูปแบบ $(p\wedge q)\to r$ เป็นจริงกี่แถว'''
+solution = "มี $8$ แถวทั้งหมด เท็จเพียงแถว $p=q=T$ และ $r=F$ จึงจริง $7$ แถว"
+answer = "7"
+truth = "sum(1 for p in [true,false] for q in [true,false] for r in [true,false] if Implies(And(p,q),r)==true)"
+hints = ["สามตัวแปรมีทั้งหมดแปดแถว", "หาว่าเหตุในวงเล็บจริงพร้อมผลเท็จได้กี่แถว แล้วลบจากทั้งหมด"]
+
+[[wrong]]
+answer = "6"
+message = "ลูกศรเท็จเฉพาะเหตุจริงและผลเท็จ มีแถวนั้นเพียงหนึ่งแถว"

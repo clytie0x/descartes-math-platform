@@ -1,0 +1,14 @@
+title = "สัจนิรันดร์"
+level = 1
+type = "choice"
+statement = "ข้อใดเป็นสัจนิรันดร์"
+solution = '''สัจนิรันดร์ต้องจริงทุกแถว แทน $p=T$ ใน $p\vee\sim p$ ได้ $T\vee F=T$ แทน $p=F$ ได้ $F\vee T=T$ จริงทั้งสองแถว จึงเป็นสัจนิรันดร์ ส่วน $p\wedge\sim p$ ได้ $T\wedge F$ กับ $F\wedge T$ เท็จทุกแถว และ $p\to q$ เท็จในแถว $p=T$ $q=F$ จึงไม่เป็นสัจนิรันดร์'''
+choices = ['''$p\vee\sim p$''', '''$p\wedge\sim p$''', '''$p\to q$''']
+checks = ["all(Or(p,Not(p))==true for p in [true,false])"]
+answer = 0
+track = "adv"
+hints = ["ลองแทน p เป็นจริงและเท็จทั้งสองกรณี", "สัจนิรันดร์ต้องจริงทุกแถว ไม่ใช่บางแถว"]
+
+[[wrong]]
+answer = 1
+message = "และระหว่างข้อความกับนิเสธจริงพร้อมกันไม่ได้ จึงเท็จทุกแถว"

@@ -1,0 +1,6 @@
+---
+/* ครอบรายการลำดับเลขใน Markdown ให้เป็นวิธีทำทีละขั้น ใส่ reveal เพื่อซ่อนขั้นที่เหลือไว้ให้กดดูทีละขั้น */
+interface Props { reveal?: boolean }
+const { reveal = false } = Astro.props;
+---
+<div class="steps" data-steps={reveal ? "" : undefined}><slot /></div>

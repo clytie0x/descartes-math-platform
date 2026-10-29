@@ -1,0 +1,6 @@
+---
+/* กล่องลองคิดก่อน ใส่คำถาม แล้วตามด้วย <Reveal> ที่มีคำตอบ */
+interface Props { label?: string }
+const { label = "ลองคิดก่อน" } = Astro.props;
+---
+<div class="box think"><p class="box-label">{label}</p><slot /></div>

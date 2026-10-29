@@ -1,0 +1,41 @@
+title = "ภาพด้านข้างจากตัวเลข"
+level = 2
+type = "choice"
+choices = ['$2 \quad 2 \quad 3$', '$3 \quad 2 \quad 2$', '$2 \quad 0 \quad 3$', '$3 \quad 2 \quad 4$']
+answer = 0
+checks = ["[Max(1, 2), Max(2, 0), Max(1, 3)] == [2, 2, 3]"]
+hints = ['ภาพด้านข้างมองจากทางขวา แถวหน้าอยู่ทางซ้ายของภาพ', 'ความสูงของแต่ละแถวในภาพคือตัวเลขที่มากที่สุดในแถวนั้น']
+statement = '''
+ภาพด้านบนของรูปที่ประกอบจากลูกบาศก์เป็นดังนี้ ภาพด้านข้างที่มองจากทางขวามีความสูงของแต่ละหลักจากซ้ายไปขวาเป็นเท่าใด
+
+<figure class="figure">
+  <svg class="fig" viewBox="-29 -4 146 164" role="img" aria-label="ภาพด้านบนสามแถวสองหลัก แถวหลังมี 1 3 แถวกลางมี 2 และช่องว่าง แถวหน้ามี 1 2">
+    <rect class="fill-teal" x="4" y="4" width="40" height="40" />
+    <text class="label" x="24" y="29" text-anchor="middle">1</text>
+    <rect class="fill-teal" x="44" y="4" width="40" height="40" />
+    <text class="label" x="64" y="29" text-anchor="middle">3</text>
+    <rect class="fill-teal" x="4" y="44" width="40" height="40" />
+    <text class="label" x="24" y="69" text-anchor="middle">2</text>
+    <rect class="fill-teal" x="4" y="84" width="40" height="40" />
+    <text class="label" x="24" y="109" text-anchor="middle">1</text>
+    <rect class="fill-teal" x="44" y="84" width="40" height="40" />
+    <text class="label" x="64" y="109" text-anchor="middle">2</text>
+    <text class="label-small" x="44" y="148" text-anchor="middle">ด้านหน้า</text>
+  </svg>
+</figure>
+'''
+solution = '''
+มองจากทางขวา แถวหน้าอยู่ทางซ้าย แถวหลังอยู่ทางขวา ความสูงของแต่ละแถวคือตัวเลขที่มากที่สุดในแถว แถวหน้ามี 1 กับ 2 ได้ 2 แถวกลางมี 2 ได้ 2 แถวหลังมี 1 กับ 3 ได้ 3 ภาพด้านข้างจึงสูง 2 2 3 จากซ้ายไปขวา
+'''
+
+[[wrong]]
+answer = 1
+message = "นี่คือภาพที่มองจากทางซ้าย หรือวาดแถวหลังไว้ทางซ้าย มองจากทางขวาแถวหน้าต้องอยู่ทางซ้ายของภาพ"
+
+[[wrong]]
+answer = 2
+message = "ดูแค่หลักขวาของภาพด้านบน แต่ภาพด้านข้างเห็นกองที่สูงที่สุดของทั้งแถว แถวกลางมีกองสูง 2 อยู่ทางซ้าย"
+
+[[wrong]]
+answer = 3
+message = "บวกตัวเลขในแถวเข้าด้วยกัน แต่ลูกบาศก์ที่อยู่แถวเดียวกันบังกันเอง ภาพเห็นแค่กองที่สูงที่สุด"

@@ -1,0 +1,25 @@
+---
+/* ทุกหน้าของบท หน้าบท หน้าเนื้อหา และหน้าแบบฝึกหัด */
+import { render } from "astro:content";
+import ChapterExtras from "../components/ChapterExtras.astro";
+import ExerciseList from "../components/ExerciseList.astro";
+import { mdxComponents } from "../components/mdx/index.ts";
+import Layout from "../layouts/Layout.astro";
+import { loadSite, type PageNode } from "../lib/site.ts";
+
+export async function getStaticPaths() {
+  const { all } = await loadSite();
+  return all.map((page) => ({ params: { path: page.url.slice(1, -1) }, props: { page } }));
+}
+
+interface Props {
+  page: PageNode;
+}
+const { page } = Astro.props;
+const Content = page.entry ? (await render(page.entry)).Content : null;
+---
+<Layout page={page}>
+  {Content && <Content components={mdxComponents} />}
+  {page.kind === "chapter" && <ChapterExtras chapter={page.chapter} />}
+  {page.kind === "exercises" && <ExerciseList chapter={page.chapter} />}
+</Layout>

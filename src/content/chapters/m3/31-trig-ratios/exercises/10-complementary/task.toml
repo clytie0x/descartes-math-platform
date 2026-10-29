@@ -1,0 +1,7 @@
+title = '''เปลี่ยนมุมอ้างอิง'''
+level = 2
+type = "self"
+hints = ['''เมื่อสลับจากมุม A เป็น B ด้านข้ามกับประชิดสลับกัน''']
+statement = '''สามเหลี่ยม ABC ฉากที่ C มี AC=8 BC=6 AB=10 เขียน sin cos tan ของมุม A และ B แล้วอธิบายว่าทำไม sin A=cos B'''
+solution = '''มุม A ได้ sin=3/5 cos=4/5 tan=3/4 มุม B ได้ sin=4/5 cos=3/5 tan=4/3 เมื่อเปลี่ยนมุมอ้างอิง ด้านข้ามกับประชิดสลับกัน แต่ด้านฉากยังเป็น AB จึง sin A=cos B'''
+checks = ['''Rational(6,10)==Rational(3,5)''', '''Rational(8,10)==Rational(4,5)''', '''Rational(6,8)==Rational(3,4)''', '''Rational(8,6)==Rational(4,3)''']

@@ -1,0 +1,502 @@
+# สารบัญของทั้งเว็บ แก้ที่ไฟล์นี้ที่เดียว
+# เมนูซ้าย ปุ่มก่อนหน้าและถัดไป และแผนที่บทในหน้าแรก สร้างจากลำดับในไฟล์นี้
+#
+# slug    โฟลเดอร์ของบทใน src/content/chapters และที่อยู่บนเว็บ
+# grade   ชั้นที่ขึ้นในแผนที่หน้าแรก
+# book    เล่มและบทในหนังสือเรียน สสวท. ที่ตรงกัน
+# topic   หมวดของเว็บ number ตัวเลขและสมการ shape รูปและการวัด data ข้อมูลและโอกาส
+# levels  เฉพาะ ม.ปลาย บทนี้อยู่ในสายไหน basic พื้นฐาน adv เพิ่มเติม
+#
+# บทที่ยังไม่มีโฟลเดอร์ src/content/chapters/<slug>/index.mdx คือบทที่วางแผนไว้
+# จะขึ้นในแผนที่หน้าแรกเป็นเส้นประ แต่ไม่อยู่ในเมนูซ้าย
+
+name = "descartes"
+description = "คณิตศาสตร์ ม.1 ถึง ม.6 อ่านไล่ทีละบท ลองขยับกราฟ และตรวจคำตอบได้ทันที"
+repo = "clytie0x/descartes-math-platform"
+author = "clytie0x"
+base = "/"
+
+[home]
+title = "หน้าแรก"
+
+# ลำดับบท ม.ปลาย ตามหนังสือของแต่ละสาย ใช้กับปุ่มก่อนหน้าถัดไปเมื่อนักเรียนเลือกสาย
+[tracks]
+basic = ["32", "33", "43", "44", "35", "36", "45", "47", "48", "49"]
+adv = ["32", "33", "34", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50"]
+
+# ---------- ม.1 ----------
+
+[[chapters]]
+num = "1"
+slug = "m1/01-integers"
+title = "บทที่ 1 จำนวนเต็ม"
+grade = "ม.1"
+book = "ม.1 เล่ม 1 บทที่ 1"
+topic = "number"
+summary = "เส้นจำนวน ค่าสัมบูรณ์ บวก ลบ คูณ หารจำนวนเต็ม"
+
+[[chapters]]
+num = "2"
+slug = "m1/02-geometric-construction"
+title = "บทที่ 2 การสร้างทางเรขาคณิต"
+grade = "ม.1"
+book = "ม.1 เล่ม 1 บทที่ 2"
+topic = "shape"
+summary = "วงเวียนกับสันตรง แบ่งครึ่งเส้นและมุม สร้างรูปสามเหลี่ยม"
+
+[[chapters]]
+num = "3"
+slug = "m1/03-exponents"
+title = "บทที่ 3 เลขยกกำลัง"
+grade = "ม.1"
+book = "ม.1 เล่ม 1 บทที่ 3"
+topic = "number"
+summary = "ความหมายของเลขยกกำลัง และสัญกรณ์วิทยาศาสตร์"
+
+[[chapters]]
+num = "4"
+slug = "m1/04-decimals-fractions"
+title = "บทที่ 4 ทศนิยมและเศษส่วน"
+grade = "ม.1"
+book = "ม.1 เล่ม 1 บทที่ 4"
+topic = "number"
+summary = "ทศนิยมซ้ำ บวก ลบ คูณ หารทศนิยมและเศษส่วน"
+
+[[chapters]]
+num = "5"
+slug = "m1/05-2d-3d-shapes"
+title = "บทที่ 5 รูปเรขาคณิตสองมิติและสามมิติ"
+grade = "ม.1"
+book = "ม.1 เล่ม 1 บทที่ 5"
+topic = "shape"
+summary = "หน้าตัด ภาพด้านหน้า ด้านข้าง ด้านบน"
+
+[[chapters]]
+num = "6"
+slug = "m1/06-linear-equations"
+title = "บทที่ 6 สมการเชิงเส้นตัวแปรเดียว"
+grade = "ม.1"
+book = "ม.1 เล่ม 2 บทที่ 1"
+topic = "number"
+summary = "สมบัติของการเท่ากัน แก้สมการ และโจทย์ปัญหา"
+
+[[chapters]]
+num = "7"
+slug = "m1/07-ratio-percent"
+title = "บทที่ 7 อัตราส่วน สัดส่วน และร้อยละ"
+grade = "ม.1"
+book = "ม.1 เล่ม 2 บทที่ 2"
+topic = "number"
+summary = "อัตราส่วนที่เท่ากัน สัดส่วน ร้อยละ ส่วนลด ดอกเบี้ย"
+
+[[chapters]]
+num = "8"
+slug = "m1/08-graphs-linear-relations"
+title = "บทที่ 8 กราฟและความสัมพันธ์เชิงเส้น"
+grade = "ม.1"
+book = "ม.1 เล่ม 2 บทที่ 3"
+topic = "number"
+summary = "คู่อันดับ ระบบพิกัดฉาก และกราฟจากสถานการณ์"
+
+[[chapters]]
+num = "9"
+slug = "m1/09-statistics-1"
+title = "บทที่ 9 สถิติ (1)"
+grade = "ม.1"
+book = "ม.1 เล่ม 2 บทที่ 4"
+topic = "data"
+summary = "คำถามทางสถิติ เก็บข้อมูล แผนภูมิแท่ง กราฟเส้น แผนภูมิวงกลม"
+
+# ---------- ม.2 ----------
+
+[[chapters]]
+num = "10"
+slug = "m2/10-pythagoras"
+title = "บทที่ 10 ทฤษฎีบทพีทาโกรัส"
+grade = "ม.2"
+book = "ม.2 เล่ม 1 บทที่ 1"
+topic = "shape"
+summary = "ทฤษฎีบท บทกลับ และการหาระยะทาง"
+
+[[chapters]]
+num = "11"
+slug = "m2/11-real-numbers"
+title = "บทที่ 11 ความรู้เบื้องต้นเกี่ยวกับจำนวนจริง"
+grade = "ม.2"
+book = "ม.2 เล่ม 1 บทที่ 2"
+topic = "number"
+summary = "จำนวนตรรกยะ อตรรกยะ รากที่สอง รากที่สาม"
+
+[[chapters]]
+num = "12"
+slug = "m2/12-prisms-cylinders"
+title = "บทที่ 12 ปริซึมและทรงกระบอก"
+grade = "ม.2"
+book = "ม.2 เล่ม 1 บทที่ 3"
+topic = "shape"
+summary = "พื้นที่ผิวและปริมาตร"
+
+[[chapters]]
+num = "13"
+slug = "m2/13-transformations"
+title = "บทที่ 13 การแปลงทางเรขาคณิต"
+grade = "ม.2"
+book = "ม.2 เล่ม 1 บทที่ 4"
+topic = "shape"
+summary = "เลื่อนขนาน สะท้อน หมุน"
+
+[[chapters]]
+num = "14"
+slug = "m2/14-exponent-laws"
+title = "บทที่ 14 สมบัติของเลขยกกำลัง"
+grade = "ม.2"
+book = "ม.2 เล่ม 1 บทที่ 5"
+topic = "number"
+summary = "คูณ หาร เลขชี้กำลังศูนย์และจำนวนลบ"
+
+[[chapters]]
+num = "15"
+slug = "m2/15-polynomials"
+title = "บทที่ 15 พหุนาม"
+grade = "ม.2"
+book = "ม.2 เล่ม 1 บทที่ 6"
+topic = "number"
+summary = "เอกนาม บวก ลบ คูณ หารพหุนาม"
+
+[[chapters]]
+num = "16"
+slug = "m2/16-statistics-2"
+title = "บทที่ 16 สถิติ (2)"
+grade = "ม.2"
+book = "ม.2 เล่ม 2 บทที่ 1"
+topic = "data"
+summary = "แผนภาพจุด ต้นใบ ฮิสโทแกรม ค่ากลาง"
+
+[[chapters]]
+num = "17"
+slug = "m2/17-congruence"
+title = "บทที่ 17 ความเท่ากันทุกประการ"
+grade = "ม.2"
+book = "ม.2 เล่ม 2 บทที่ 2"
+topic = "shape"
+summary = "ด.ม.ด. ม.ด.ม. ด.ด.ด. ฉ.ด.ด."
+
+[[chapters]]
+num = "18"
+slug = "m2/18-parallel-lines"
+title = "บทที่ 18 เส้นขนาน"
+grade = "ม.2"
+book = "ม.2 เล่ม 2 บทที่ 3"
+topic = "shape"
+summary = "มุมภายใน มุมแย้ง มุมภายนอก"
+
+[[chapters]]
+num = "19"
+slug = "m2/19-geometric-reasoning"
+title = "บทที่ 19 การให้เหตุผลทางเรขาคณิต"
+grade = "ม.2"
+book = "ม.2 เล่ม 2 บทที่ 4"
+topic = "shape"
+summary = "การพิสูจน์และบทกลับ"
+
+[[chapters]]
+num = "20"
+slug = "m2/20-factoring-quadratics"
+title = "บทที่ 20 การแยกตัวประกอบของพหุนามดีกรีสอง"
+grade = "ม.2"
+book = "ม.2 เล่ม 2 บทที่ 5"
+topic = "number"
+summary = "ดึงตัวร่วม กำลังสองสมบูรณ์ ผลต่างกำลังสอง"
+
+# ---------- ม.3 ----------
+
+[[chapters]]
+num = "21"
+slug = "m3/21-linear-inequalities"
+title = "บทที่ 21 อสมการเชิงเส้นตัวแปรเดียว"
+grade = "ม.3"
+book = "ม.3 เล่ม 1 บทที่ 1"
+topic = "number"
+summary = "คำตอบบนเส้นจำนวน แก้อสมการ โจทย์ปัญหา"
+
+[[chapters]]
+num = "22"
+slug = "m3/22-factoring-higher"
+title = "บทที่ 22 การแยกตัวประกอบของพหุนามที่มีดีกรีสูงกว่าสอง"
+grade = "ม.3"
+book = "ม.3 เล่ม 1 บทที่ 2"
+topic = "number"
+summary = "ผลบวกและผลต่างกำลังสาม"
+
+[[chapters]]
+num = "23"
+slug = "m3/23-quadratic-equations"
+title = "บทที่ 23 สมการกำลังสองตัวแปรเดียว"
+grade = "ม.3"
+book = "ม.3 เล่ม 1 บทที่ 3"
+topic = "number"
+summary = "แยกตัวประกอบ กำลังสองสมบูรณ์ สูตรสมการกำลังสอง"
+
+[[chapters]]
+num = "24"
+slug = "m3/24-similarity"
+title = "บทที่ 24 ความคล้าย"
+grade = "ม.3"
+book = "ม.3 เล่ม 1 บทที่ 4"
+topic = "shape"
+summary = "สามเหลี่ยมคล้าย และการวัดระยะ"
+
+[[chapters]]
+num = "25"
+slug = "m3/25-quadratic-graphs"
+title = "บทที่ 25 กราฟของฟังก์ชันกำลังสอง"
+grade = "ม.3"
+book = "ม.3 เล่ม 1 บทที่ 5"
+topic = "number"
+summary = "พาราโบลา จุดยอด แกนสมมาตร ค่าสูงสุดต่ำสุด"
+
+[[chapters]]
+num = "26"
+slug = "m3/26-statistics-3"
+title = "บทที่ 26 สถิติ (3)"
+grade = "ม.3"
+book = "ม.3 เล่ม 1 บทที่ 6"
+topic = "data"
+summary = "ควอร์ไทล์ แผนภาพกล่อง เปรียบเทียบข้อมูล"
+
+[[chapters]]
+num = "27"
+slug = "m3/27-linear-systems"
+title = "บทที่ 27 ระบบสมการเชิงเส้นสองตัวแปร"
+grade = "ม.3"
+book = "ม.3 เล่ม 2 บทที่ 1"
+topic = "number"
+summary = "กราฟ แทนค่า กำจัดตัวแปร"
+
+[[chapters]]
+num = "28"
+slug = "m3/28-circles"
+title = "บทที่ 28 วงกลม"
+grade = "ม.3"
+book = "ม.3 เล่ม 2 บทที่ 2"
+topic = "shape"
+summary = "มุมในวงกลม คอร์ด เส้นสัมผัส"
+
+[[chapters]]
+num = "29"
+slug = "m3/29-pyramids-cones-spheres"
+title = "บทที่ 29 พีระมิด กรวย และทรงกลม"
+grade = "ม.3"
+book = "ม.3 เล่ม 2 บทที่ 3"
+topic = "shape"
+summary = "พื้นที่ผิวและปริมาตร"
+
+[[chapters]]
+num = "30"
+slug = "m3/30-probability"
+title = "บทที่ 30 ความน่าจะเป็น"
+grade = "ม.3"
+book = "ม.3 เล่ม 2 บทที่ 4"
+topic = "data"
+summary = "การทดลองสุ่ม เหตุการณ์ ความน่าจะเป็น"
+
+[[chapters]]
+num = "31"
+slug = "m3/31-trig-ratios"
+title = "บทที่ 31 อัตราส่วนตรีโกณมิติ"
+grade = "ม.3"
+book = "ม.3 เล่ม 2 บทที่ 5"
+topic = "shape"
+summary = "sin cos tan มุม 30 45 60 องศา ระยะทางและความสูง"
+
+# ---------- ม.ปลาย ----------
+
+[[chapters]]
+num = "32"
+slug = "m4-6/32-sets"
+title = "บทที่ 32 เซต"
+grade = "ม.ปลาย"
+book = "พื้นฐาน ม.4 บทที่ 1 และเพิ่มเติม ม.4 เล่ม 1 บทที่ 1"
+topic = "number"
+levels = ["basic", "adv"]
+summary = "สับเซต แผนภาพเวนน์ ยูเนียน อินเตอร์เซกชัน คอมพลีเมนต์"
+
+[[chapters]]
+num = "33"
+slug = "m4-6/33-logic"
+title = "บทที่ 33 ตรรกศาสตร์"
+grade = "ม.ปลาย"
+book = "พื้นฐาน ม.4 บทที่ 2 และเพิ่มเติม ม.4 เล่ม 1 บทที่ 2"
+topic = "number"
+levels = ["basic", "adv"]
+summary = "ประพจน์ ตัวเชื่อม ค่าความจริง การอ้างเหตุผล"
+
+[[chapters]]
+num = "34"
+slug = "m4-6/34-real-numbers"
+title = "บทที่ 34 จำนวนจริง"
+grade = "ม.ปลาย"
+book = "เพิ่มเติม ม.4 เล่ม 1 บทที่ 3"
+topic = "number"
+levels = ["adv"]
+summary = "สมการและอสมการพหุนาม ค่าสัมบูรณ์"
+
+[[chapters]]
+num = "35"
+slug = "m4-6/35-exponents"
+title = "บทที่ 35 เลขยกกำลัง"
+grade = "ม.ปลาย"
+book = "พื้นฐาน ม.5 บทที่ 1"
+topic = "number"
+levels = ["basic"]
+summary = "รากที่ n และเลขชี้กำลังเป็นจำนวนตรรกยะ"
+
+[[chapters]]
+num = "36"
+slug = "m4-6/36-functions"
+title = "บทที่ 36 ความสัมพันธ์และฟังก์ชัน"
+grade = "ม.ปลาย"
+book = "พื้นฐาน ม.5 บทที่ 2 และเพิ่มเติม ม.4 เล่ม 2 บทที่ 1"
+topic = "number"
+levels = ["basic", "adv"]
+summary = "ฟังก์ชันและกราฟ โดเมน เรนจ์ ฟังก์ชันผกผัน"
+
+[[chapters]]
+num = "37"
+slug = "m4-6/37-exp-log"
+title = "บทที่ 37 ฟังก์ชันเอกซ์โพเนนเชียลและฟังก์ชันลอการิทึม"
+grade = "ม.ปลาย"
+book = "เพิ่มเติม ม.4 เล่ม 2 บทที่ 2"
+topic = "number"
+levels = ["adv"]
+summary = "กราฟ สมการ อสมการ และการนำไปใช้"
+
+[[chapters]]
+num = "38"
+slug = "m4-6/38-analytic-geometry"
+title = "บทที่ 38 เรขาคณิตวิเคราะห์"
+grade = "ม.ปลาย"
+book = "เพิ่มเติม ม.4 เล่ม 2 บทที่ 3"
+topic = "shape"
+levels = ["adv"]
+summary = "ระยะทาง จุดกึ่งกลาง เส้นตรง ความชัน"
+
+[[chapters]]
+num = "39"
+slug = "m4-6/39-trig-functions"
+title = "บทที่ 39 ฟังก์ชันตรีโกณมิติ"
+grade = "ม.ปลาย"
+book = "เพิ่มเติม ม.5 เล่ม 1 บทที่ 1"
+topic = "shape"
+levels = ["adv"]
+summary = "วงกลมหนึ่งหน่วย เรเดียน กราฟ กฎของไซน์และโคไซน์"
+
+[[chapters]]
+num = "40"
+slug = "m4-6/40-matrices"
+title = "บทที่ 40 เมทริกซ์"
+grade = "ม.ปลาย"
+book = "เพิ่มเติม ม.5 เล่ม 1 บทที่ 2"
+topic = "number"
+levels = ["adv"]
+summary = "ดีเทอร์มิแนนต์ เมทริกซ์ผกผัน แก้ระบบสมการ"
+
+[[chapters]]
+num = "41"
+slug = "m4-6/41-vectors"
+title = "บทที่ 41 เวกเตอร์"
+grade = "ม.ปลาย"
+book = "เพิ่มเติม ม.5 เล่ม 1 บทที่ 3"
+topic = "shape"
+levels = ["adv"]
+summary = "เวกเตอร์ในระบบพิกัด ผลคูณเชิงสเกลาร์และเชิงเวกเตอร์"
+
+[[chapters]]
+num = "42"
+slug = "m4-6/42-complex-numbers"
+title = "บทที่ 42 จำนวนเชิงซ้อน"
+grade = "ม.ปลาย"
+book = "เพิ่มเติม ม.5 เล่ม 2 บทที่ 1"
+topic = "number"
+levels = ["adv"]
+summary = "ระนาบเชิงซ้อน รูปเชิงขั้ว รากที่ n"
+
+[[chapters]]
+num = "43"
+slug = "m4-6/43-counting"
+title = "บทที่ 43 หลักการนับเบื้องต้น"
+grade = "ม.ปลาย"
+book = "พื้นฐาน ม.4 บทที่ 3 และเพิ่มเติม ม.5 เล่ม 2 บทที่ 2"
+topic = "data"
+levels = ["basic", "adv"]
+summary = "หลักการบวกและการคูณ เรียงสับเปลี่ยน จัดหมู่ ทฤษฎีบททวินาม"
+
+[[chapters]]
+num = "44"
+slug = "m4-6/44-probability"
+title = "บทที่ 44 ความน่าจะเป็น"
+grade = "ม.ปลาย"
+book = "พื้นฐาน ม.4 บทที่ 4 และเพิ่มเติม ม.5 เล่ม 2 บทที่ 3"
+topic = "data"
+levels = ["basic", "adv"]
+summary = "การทดลองสุ่ม เหตุการณ์ กฎของความน่าจะเป็น"
+
+[[chapters]]
+num = "45"
+slug = "m4-6/45-sequences-series"
+title = "บทที่ 45 ลำดับและอนุกรม"
+grade = "ม.ปลาย"
+book = "พื้นฐาน ม.5 บทที่ 3 และเพิ่มเติม ม.6 เล่ม 1 บทที่ 1"
+topic = "number"
+levels = ["basic", "adv"]
+summary = "ลำดับและอนุกรมเลขคณิต เรขาคณิต อนุกรมอนันต์"
+
+[[chapters]]
+num = "46"
+slug = "m4-6/46-calculus"
+title = "บทที่ 46 แคลคูลัสเบื้องต้น"
+grade = "ม.ปลาย"
+book = "เพิ่มเติม ม.6 เล่ม 1 บทที่ 2"
+topic = "number"
+levels = ["adv"]
+summary = "ลิมิต อนุพันธ์ ปริพันธ์ และพื้นที่ใต้กราฟ"
+
+[[chapters]]
+num = "47"
+slug = "m4-6/47-statistics-data"
+title = "บทที่ 47 ความหมายของสถิติศาสตร์และข้อมูล"
+grade = "ม.ปลาย"
+book = "พื้นฐาน ม.6 บทที่ 1 และเพิ่มเติม ม.6 เล่ม 2 บทที่ 1"
+topic = "data"
+levels = ["basic", "adv"]
+summary = "ชนิดของข้อมูล และการเก็บข้อมูล"
+
+[[chapters]]
+num = "48"
+slug = "m4-6/48-qualitative-data"
+title = "บทที่ 48 การวิเคราะห์และนำเสนอข้อมูลเชิงคุณภาพ"
+grade = "ม.ปลาย"
+book = "พื้นฐาน ม.6 บทที่ 2 และเพิ่มเติม ม.6 เล่ม 2 บทที่ 2"
+topic = "data"
+levels = ["basic", "adv"]
+summary = "ตารางความถี่ แผนภูมิ การแปลความหมาย"
+
+[[chapters]]
+num = "49"
+slug = "m4-6/49-quantitative-data"
+title = "บทที่ 49 การวิเคราะห์และนำเสนอข้อมูลเชิงปริมาณ"
+grade = "ม.ปลาย"
+book = "พื้นฐาน ม.6 บทที่ 3 และเพิ่มเติม ม.6 เล่ม 2 บทที่ 3"
+topic = "data"
+levels = ["basic", "adv"]
+summary = "ค่ากลาง การกระจาย การวัดตำแหน่ง"
+
+[[chapters]]
+num = "50"
+slug = "m4-6/50-random-variables"
+title = "บทที่ 50 ตัวแปรสุ่มและการแจกแจงความน่าจะเป็น"
+grade = "ม.ปลาย"
+book = "เพิ่มเติม ม.6 เล่ม 2 บทที่ 4"
+topic = "data"
+levels = ["adv"]
+summary = "ค่าคาดหมาย การแจกแจงทวินาม การแจกแจงปกติ"

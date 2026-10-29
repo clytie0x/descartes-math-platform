@@ -1,0 +1,12 @@
+title = '''มีวงเล็บ'''
+level = 2
+type = "number"
+statement = '''แก้ $2(x-3)\ge x+5$ แล้วเติมขอบใน $x\ge\square$'''
+solution = '''$2x-6\ge x+5$ ลบ $x$ แล้วบวก 6 ได้ $x\ge11$'''
+hints = ['''กระจาย 2 ให้ครบทั้งสองพจน์ในวงเล็บ''']
+answer = '''11'''
+truth = '''solve(2*(x-3)-(x+5),x)[0]'''
+
+[[wrong]]
+answer = '''-1'''
+message = '''ต้องกระจาย 2 คูณทั้ง x และ −3'''

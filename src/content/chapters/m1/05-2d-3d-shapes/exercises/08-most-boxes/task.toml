@@ -1,0 +1,53 @@
+title = "ลังน้ำดื่มมากที่สุด"
+level = 3
+type = "number"
+unit = "ลัง"
+answer = "11"
+truth = "Max(*[p + q + r + s + u + v for p in range(1, 4) for q in range(1, 4) for r in range(1, 4) for s in range(1, 4) for u in range(1, 4) for v in range(1, 4) if Max(p, s) == 2 and Max(q, u) == 3 and Max(r, v) == 1 and Max(s, u, v) == 3 and Max(p, q, r) == 2])"
+hints = ['แต่ละช่องสูงได้ไม่เกินค่าที่น้อยกว่าระหว่างความสูงของหลักในภาพด้านหน้ากับความสูงของแถวในภาพด้านข้าง', 'แถวหน้าสูง 3 แถวหลังสูง 2 หลักจากซ้ายไปขวาสูง 2 3 1']
+statement = '''
+ลังน้ำดื่มรูปลูกบาศก์ขนาดเท่ากันวางซ้อนกันบนพื้นที่ขนาด 2 แถว 3 หลัก กล้องวงจรปิดถ่ายภาพด้านหน้า ภาพด้านข้างที่มองจากทางขวา และภาพด้านบนไว้ได้ดังนี้ กองนี้มีลังน้ำดื่มได้มากที่สุดกี่ลัง
+
+<figure class="figure">
+  <svg class="fig" viewBox="2 10 316 132" role="img" aria-label="ภาพด้านหน้าสูง 2 3 1 ภาพด้านข้างสูง 3 2 ภาพด้านบนเป็นหกช่องเต็ม">
+    <rect class="fill-accent" x="10" y="78" width="30" height="30" />
+    <rect class="fill-accent" x="10" y="48" width="30" height="30" />
+    <rect class="fill-accent" x="40" y="78" width="30" height="30" />
+    <rect class="fill-accent" x="40" y="48" width="30" height="30" />
+    <rect class="fill-accent" x="40" y="18" width="30" height="30" />
+    <rect class="fill-accent" x="70" y="78" width="30" height="30" />
+    <text class="label" x="55" y="130" text-anchor="middle">ด้านหน้า</text>
+    <rect class="fill-violet" x="130" y="78" width="30" height="30" />
+    <rect class="fill-violet" x="130" y="48" width="30" height="30" />
+    <rect class="fill-violet" x="130" y="18" width="30" height="30" />
+    <rect class="fill-violet" x="160" y="78" width="30" height="30" />
+    <rect class="fill-violet" x="160" y="48" width="30" height="30" />
+    <text class="label" x="160" y="130" text-anchor="middle">ด้านข้าง</text>
+    <rect class="fill-teal" x="220" y="78" width="30" height="30" />
+    <rect class="fill-teal" x="220" y="48" width="30" height="30" />
+    <rect class="fill-teal" x="250" y="78" width="30" height="30" />
+    <rect class="fill-teal" x="250" y="48" width="30" height="30" />
+    <rect class="fill-teal" x="280" y="78" width="30" height="30" />
+    <rect class="fill-teal" x="280" y="48" width="30" height="30" />
+    <text class="label" x="265" y="130" text-anchor="middle">ด้านบน</text>
+  </svg>
+</figure>
+'''
+solution = '''
+1. ภาพด้านหน้าบอกว่าหลักซ้าย กลาง ขวา สูง 2 3 1 ภาพด้านข้างบอกว่าแถวหน้าสูง 3 แถวหลังสูง 2
+2. ให้ทุกช่องสูงเต็มที่ คือค่าที่น้อยกว่าระหว่างความสูงของหลักกับของแถว
+3. แถวหน้า ได้ 2 3 1 รวม 6 ลัง แถวหลัง ได้ 2 2 1 รวม 5 ลัง
+4. ตรวจภาพ หลักกลางสูง 3 จากแถวหน้า แถวหน้าสูง 3 แถวหลังสูง 2 ตรงกับภาพทุกภาพ มากที่สุด $6 + 5 = 11$ ลัง
+'''
+
+[[wrong]]
+answer = "9"
+message = "9 คือจำนวนที่น้อยที่สุดที่ทำให้ได้ภาพแบบนี้ ข้อนี้ถามมากที่สุด ให้ทุกช่องสูงเต็มที่เท่าที่ภาพยอม"
+
+[[wrong]]
+answer = "12"
+message = "แถวหลังสูงได้แค่ 2 ช่องหลังกลางจึงมี 3 ลังไม่ได้ แม้หลักกลางจะสูง 3"
+
+[[wrong]]
+answer = "6"
+message = "6 คือจำนวนช่องในภาพด้านหน้า ลังที่อยู่ข้างหลังถูกบังจึงไม่เห็นในภาพนี้"

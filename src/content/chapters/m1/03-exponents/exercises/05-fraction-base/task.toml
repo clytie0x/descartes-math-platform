@@ -1,0 +1,25 @@
+title = "ฐานเป็นเศษส่วน"
+level = 2
+type = "number"
+answer = "27/125"
+truth = "Rational(3, 5)**3"
+accept = ["0.216"]
+hints = ['$\left(\tfrac{3}{5}\right)^3 = \tfrac{3}{5} \times \tfrac{3}{5} \times \tfrac{3}{5}$ เอาเศษคูณเศษ ส่วนคูณส่วน']
+statement = '''
+$\left(\tfrac{3}{5}\right)^3$ มีค่าเท่าใด ตอบเป็นเศษส่วน เช่น 2/7
+'''
+solution = '''
+$\left(\tfrac{3}{5}\right)^3 = \tfrac{3 \times 3 \times 3}{5 \times 5 \times 5} = \tfrac{27}{125}$ ยกกำลังทั้งเศษและส่วน
+'''
+
+[[wrong]]
+answer = "27/5"
+message = "วงเล็บครอบทั้งเศษส่วน จึงต้องยกกำลังทั้งเศษและส่วน ส่วนต้องเป็น 5 × 5 × 5 = 125"
+
+[[wrong]]
+answer = "9/5"
+message = "(3/5)³ ไม่ใช่ (3 × 3)/5 ต้องเอา 3/5 คูณกับตัวเองสามตัว"
+
+[[wrong]]
+answer = "9/125"
+message = "ส่วนถูกแล้ว แต่เศษต้องเป็น 3 × 3 × 3 = 27 ไม่ใช่ 3 × 3"

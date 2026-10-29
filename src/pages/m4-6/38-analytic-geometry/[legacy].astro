@@ -1,0 +1,64 @@
+---
+// Static compatibility pages for bookmarks made before chapter 38 was split.
+export function getStaticPaths() {
+  if (process.env.DC_ONLY && process.env.DC_ONLY !== "m4-6/38-analytic-geometry") return [];
+  const base = "/m4-6/38-analytic-geometry/";
+  return [
+    {
+      params: { legacy: "circle-parabola" },
+      props: {
+        primary: `${base}circle/`, secondary: `${base}parabola/`,
+        primaryTitle: "วงกลม", secondaryTitle: "พาราโบลา",
+        fragments: {
+          "วงกลม": `${base}circle/#จากนิยามสู่สมการ`,
+          "พาราโบลา": `${base}parabola/#นิยามด้วยโฟกัสและไดเรกตริกซ์`,
+          "พาราโบลาเปิดด้านข้าง": `${base}parabola/#หาสมการรูปมาตรฐาน`,
+          "ตัวอย่างพร้อมวิธีทำ": `${base}circle/#รูปทั่วไปและการทำกำลังสองสมบูรณ์`,
+        },
+      },
+    },
+    {
+      params: { legacy: "ellipse-hyperbola" },
+      props: {
+        primary: `${base}ellipse/`, secondary: `${base}hyperbola/`,
+        primaryTitle: "วงรี", secondaryTitle: "ไฮเพอร์โบลา",
+        fragments: {
+          "วงรี": `${base}ellipse/#นิยามด้วยผลบวกระยะ`,
+          "ไฮเพอร์โบลา": `${base}hyperbola/#นิยามด้วยผลต่างระยะ`,
+          "ตัวอย่างพร้อมวิธีทำ": `${base}ellipse/#อ่านค่าจากสมการ`,
+          "เลื่อนศูนย์กลางก่อนอ่านโฟกัส": `${base}ellipse/#อ่านค่าจากสมการ`,
+        },
+      },
+    },
+  ];
+}
+const { primary, secondary, primaryTitle, secondaryTitle, fragments } = Astro.props;
+---
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ย้ายหน้า {primaryTitle} และ{secondaryTitle}แล้ว</title>
+    <link rel="canonical" href={new URL(primary, Astro.site)} />
+    <meta name="robots" content="noindex, follow" />
+    <script is:inline define:vars={{ primary, fragments }}>
+      // Keep queries and surviving heading IDs; route old topic anchors to the split page.
+      let fragment = location.hash.slice(1);
+      try { fragment = decodeURIComponent(fragment); } catch {}
+      const mapped = Object.hasOwn(fragments, fragment) ? fragments[fragment] : null;
+      const target = new URL(mapped || primary, location.href);
+      target.search = location.search;
+      if (!mapped) target.hash = location.hash;
+      location.replace(target.href);
+    </script>
+  </head>
+  <body>
+    <main>
+      <h1>หน้านี้แยกเป็นสองหน้าแล้ว</h1>
+      <p>กำลังพาไปหน้า <a href={primary}>{primaryTitle}</a></p>
+      <p>อีกหัวข้ออ่านต่อได้ที่หน้า <a href={secondary}>{secondaryTitle}</a></p>
+      <noscript><p>เลือกหัวข้อที่ต้องการจากลิงก์ด้านบนเพื่ออ่านต่อ</p></noscript>
+    </main>
+  </body>
+</html>

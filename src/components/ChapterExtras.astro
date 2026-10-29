@@ -1,0 +1,35 @@
+---
+/* ท้ายหน้าบท ตารางหน้าในบทจาก goal ของแต่ละหน้า และเช็กลิสต์จาก checklist ใน frontmatter ของ index.mdx */
+import { mdInline } from "../lib/markdown.ts";
+import { LEVEL_NAMES, type ChapterNode } from "../lib/site.ts";
+
+interface Props {
+  chapter: ChapterNode;
+}
+const { chapter } = Astro.props;
+const checklist = chapter.self.entry?.data.checklist ?? [];
+const where = chapter.self.source;
+---
+<h2 id="in-this-chapter">ในบทนี้</h2>
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>หน้า</th><th>ได้อะไร</th></tr></thead>
+    <tbody>
+      {chapter.pages.map((p) => (
+        <tr data-level={p.level}>
+          <td><a href={p.url}>{p.label}</a>{p.level && <Fragment> <span class={`lvl lvl-${p.level}`}>{LEVEL_NAMES[p.level]}</span></Fragment>}</td>
+          <td set:html={mdInline(p.goal ?? "", p.source)} />
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+{checklist.length > 0 && (
+  <Fragment>
+    <h2 id="checklist">ผ่านบทนี้เมื่อ</h2>
+    <ul class="task-list">
+      {checklist.map((item) => <li><label><input type="checkbox" /> <span set:html={mdInline(item, where)} /></label></li>)}
+    </ul>
+  </Fragment>
+)}

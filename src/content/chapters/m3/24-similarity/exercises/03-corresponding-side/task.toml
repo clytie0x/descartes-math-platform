@@ -1,0 +1,12 @@
+title = '''ด้านที่สมนัย'''
+level = 1
+type = "number"
+statement = '''$\triangle ABC\sim\triangle DEF$ โดย $AB=4$ $BC=6$ และ $DE=10$ จงหา $EF$'''
+solution = '''$EF/BC=DE/AB=10/4$ จึงได้ $EF=6(10/4)=15$'''
+hints = ['''AB สมนัยกับ DE และ BC สมนัยกับ EF''']
+answer = '''15'''
+truth = '''6*Rational(10,4)'''
+
+[[wrong]]
+answer = '''12'''
+message = '''จับคู่ตามลำดับชื่อ A กับ D และ B กับ E ก่อนตั้งสัดส่วน'''

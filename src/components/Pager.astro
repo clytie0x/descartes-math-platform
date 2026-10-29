@@ -1,0 +1,36 @@
+---
+/* ปุ่มก่อนหน้าและถัดไป ค่าเริ่มต้นเรียงตามเลขบท
+   ถ้าสายพื้นฐานหรือเพิ่มเติมมีลำดับต่างออกไป ใส่ไว้ใน JSON ให้ site.ts สลับตามสายที่นักเรียนเลือก */
+import { loadSite, type Level, type Neighbors, type PageNode } from "../lib/site.ts";
+
+interface Props {
+  page: PageNode;
+}
+const { page } = Astro.props;
+const { neighbors } = await loadSite();
+const rec = neighbors.get(page.url);
+const { prev, next } = rec?.all ?? {};
+const brief = (n?: Neighbors) => ({ prev: n?.prev && { url: n.prev.url, label: n.prev.label }, next: n?.next && { url: n.next.url, label: n.next.label } });
+const alt: Partial<Record<Level, ReturnType<typeof brief>>> = {};
+for (const lv of ["basic", "adv"] as Level[]) {
+  const n = rec?.[lv];
+  if (n && (n.prev !== prev || n.next !== next)) alt[lv] = brief(n);
+}
+---
+{(prev || next) && (
+  <nav class="pager" aria-label="หน้าก่อนหน้าและถัดไป">
+    {prev && (
+      <a class="prev" href={prev.url}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        <span class="pg-text"><span class="pg-label">ก่อนหน้า</span><span class="pg-title">{prev.label}</span></span>
+      </a>
+    )}
+    {next && (
+      <a class="next" href={next.url}>
+        <span class="pg-text"><span class="pg-label">ถัดไป</span><span class="pg-title">{next.label}</span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    )}
+  </nav>
+)}
+{Object.keys(alt).length > 0 && <script is:inline type="application/json" id="track-pager" set:html={JSON.stringify(alt)} />}

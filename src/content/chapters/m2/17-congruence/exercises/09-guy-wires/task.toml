@@ -1,0 +1,32 @@
+title = "ลวดยึดเสาธง"
+level = 3
+type = "number"
+unit = "เมตร"
+answer = "12"
+truth = "2*sqrt(10**2 - 8**2)"
+hints = ['$\triangle ABC$ กับ $\triangle ABD$ เป็นรูปสามเหลี่ยมมุมฉาก มีด้านตรงข้ามมุมฉากยาวเท่ากัน และใช้ด้าน $AB$ ร่วมกัน', 'หา $BC$ ด้วยทฤษฎีบทพีทาโกรัส แล้วใช้ว่า $BD = BC$']
+statement = '''
+เสาธงของโรงเรียนตั้งฉากกับพื้นที่จุด $B$ ใช้ลวดสองเส้นยาวเส้นละ $10$ เมตรยึดเสาไว้ ปลายบนของลวดทั้งสองผูกที่จุด $A$ บนเสา ซึ่งสูงจากพื้น $8$ เมตร ปลายล่างตอกหมุดลงพื้นที่ $C$ และ $D$ คนละข้างของเสา โดย $C$ $B$ และ $D$ อยู่ในแนวเส้นตรงเดียวกัน หมุด $C$ กับ $D$ อยู่ห่างกันกี่เมตร
+
+<figure class="figure"><svg class="fig" viewBox="0 0 360 225" role="img" aria-label="เสาธงตั้งฉากกับพื้นที่จุด B ลวด AC และ AD ยาว 10 เมตรเท่ากัน ผูกที่จุด A บนเสาสูงจากพื้น 8 เมตร ปลายลวด C และ D อยู่บนพื้นคนละข้างของเสา"><line class="thin" x1="20" y1="200" x2="340" y2="200" /><line class="line" x1="180" y1="200" x2="180" y2="25" /><path class="fill-accent" d="M180 25 L230 37 L180 49 Z" /><line class="accent" x1="180" y1="60" x2="75" y2="200" /><line class="accent" x1="180" y1="60" x2="285" y2="200" /><path class="line" d="M180 187 L167 187 L167 200" /><path class="line" d="M180 187 L193 187 L193 200" /><line class="line" x1="132.3" y1="133.6" x2="122.7" y2="126.4" /><line class="line" x1="237.3" y1="126.4" x2="227.7" y2="133.6" /><text class="label" x="109.9" y="121.8" text-anchor="middle">10 ม.</text><text class="label" x="250.1" y="121.8" text-anchor="middle">10 ม.</text><text class="label" x="186" y="140" text-anchor="start">8 ม.</text><text class="label-math" x="163.7" y="61.1" text-anchor="middle">A</text><text class="label-math" x="180" y="223" text-anchor="middle">B</text><text class="label-math" x="75" y="223" text-anchor="middle">C</text><text class="label-math" x="285" y="223" text-anchor="middle">D</text></svg></figure>
+'''
+solution = '''
+1. $A\hat{B}C = A\hat{B}D = 90^\circ$ เพราะเสาตั้งฉากกับพื้น
+2. $AC = AD = 10$ เมตร เป็นด้านตรงข้ามมุมฉากของทั้งสองรูป
+3. $AB = AB$ เป็นด้านร่วม และเป็นด้านประกอบมุมฉาก
+4. จึงได้ $\triangle ABC \cong \triangle ABD$ (ฉ.ด.ด.) และ $BC = BD$
+5. $BC = \sqrt{10^2 - 8^2} = \sqrt{36} = 6$ เมตร
+6. $CD = BC + BD = 6 + 6 = 12$ เมตร
+'''
+
+[[wrong]]
+answer = "6"
+message = "6 เมตรคือ BC หรือ BD เพียงข้างเดียว หมุดทั้งสองอยู่คนละข้างของเสา CD = BC + BD"
+
+[[wrong]]
+answer = "36"
+message = "10² − 8² = 36 คือ BC² ต้องถอดรากที่สองก่อน ได้ BC = 6"
+
+[[wrong]]
+answer = "4"
+message = "ทฤษฎีบทพีทาโกรัสใช้กำลังสองของด้าน ไม่ใช่ 10 − 8 ลองหา BC² = 10² − 8²"

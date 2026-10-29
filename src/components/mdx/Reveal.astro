@@ -1,0 +1,6 @@
+---
+/* กดเปิดดูเพิ่ม ค่าเริ่มต้นเป็นปุ่มดูคำตอบ */
+interface Props { summary?: string }
+const { summary = "ดูคำตอบ" } = Astro.props;
+---
+<details class="reveal"><summary>{summary}</summary><slot /></details>

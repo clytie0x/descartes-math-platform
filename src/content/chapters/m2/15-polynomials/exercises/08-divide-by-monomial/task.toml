@@ -1,0 +1,29 @@
+title = "หารด้วยเอกนาม"
+level = 2
+type = "expr"
+form = "expanded"
+answer = "3x^2-2xy+1"
+truth = "expand((12*x**3*y - 8*x**2*y**2 + 4*x*y)/(4*x*y))"
+accept = ["3x^2 - 2xy + 1", "1-2xy+3x^2"]
+hints = ['หาร $4xy$ เข้าไปทุกพจน์', 'ตัวแปรเดียวกันหารกัน ให้ลบเลขชี้กำลัง เช่น $x^3 \div x = x^2$']
+statement = '''
+หา $(12x^3y - 8x^2y^2 + 4xy) \div 4xy$
+'''
+solution = '''
+1. $\dfrac{12x^3y}{4xy} = 3x^2$
+2. $\dfrac{-8x^2y^2}{4xy} = -2xy$
+3. $\dfrac{4xy}{4xy} = 1$
+4. ได้ $3x^2 - 2xy + 1$ ตรวจ $4xy(3x^2 - 2xy + 1) = 12x^3y - 8x^2y^2 + 4xy$
+'''
+
+[[wrong]]
+answer = "3x^2-2xy"
+message = "พจน์สุดท้าย 4xy ÷ 4xy = 1 ไม่ใช่ 0 ตัวที่หารตัวเองได้ 1"
+
+[[wrong]]
+answer = "3x^3y-2x^2y^2+1"
+message = "ตัวแปรต้องหารด้วย x³y ÷ xy = x² และ x²y² ÷ xy = xy"
+
+[[wrong]]
+answer = "3x^2+2xy+1"
+message = "−8x²y² ÷ 4xy = −2xy ลบหารบวกได้ลบ"

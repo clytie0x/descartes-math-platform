@@ -1,0 +1,109 @@
+---
+/* หน้าแบบฝึกหัดของบท ข้อมูลเฉลยใส่ไว้ใน data-ex ให้ exercise.ts ตรวจในเบราว์เซอร์ */
+import { md, mdInline } from "../lib/markdown.ts";
+import type { ChapterNode } from "../lib/site.ts";
+import type { Exercise } from "../lib/exercises.ts";
+
+interface Props {
+  chapter: ChapterNode;
+}
+const { chapter } = Astro.props;
+const LEVELS: Record<number, string> = { 1: "ง่าย", 2: "กลาง", 3: "ยาก" };
+
+/* สลับลำดับขั้นของข้อแบบ order แบบคงที่ตามชื่อข้อ ทุกครั้งที่ build ได้ลำดับเดิม และไม่ตรงกับเฉลย */
+function shuffled(ex: Exercise): number[] {
+  const n = ex.steps?.length ?? 0;
+  let seed = [...ex.slug].reduce((s, c) => (s * 31 + c.charCodeAt(0)) % 2147483647, 7);
+  const idx = [...Array(n).keys()];
+  for (let i = n - 1; i > 0; i--) {
+    seed = (seed * 48271) % 2147483647;
+    const j = seed % (i + 1);
+    [idx[i], idx[j]] = [idx[j] ?? 0, idx[i] ?? 0];
+  }
+  if (idx.every((v, i) => v === i)) idx.reverse();
+  return idx;
+}
+
+function data(ex: Exercise): string {
+  const d: Record<string, unknown> = { type: ex.type };
+  for (const key of ["answer", "form", "tolerance", "alternatives"] as const) {
+    if (ex[key] !== undefined) d[key] = ex[key];
+  }
+  if (ex.type === "order") d.answer = [...Array(ex.steps?.length ?? 0).keys()];
+  if (ex.wrong?.length) d.wrong = ex.wrong.map((w) => ({ answer: w.answer, message: w.message }));
+  return JSON.stringify(d);
+}
+
+const items = chapter.exercises.map((ex, i) => {
+  const where = `src/content/chapters/${chapter.meta.slug}/exercises/${ex.dir}/task.toml`;
+  return {
+    ex,
+    n: i + 1,
+    statement: md(ex.statement, where),
+    solution: ex.solution ? md(ex.solution, where) : "",
+    hints: (ex.hints ?? []).map((h) => md(h, where)),
+    choices: (ex.choices ?? []).map((c) => mdInline(c, where)),
+    steps: ex.type === "order" ? shuffled(ex).map((k) => ({ k, html: mdInline(ex.steps?.[k] ?? "", where) })) : [],
+    label: ex.label ? mdInline(ex.label, where) : "คำตอบ",
+    unit: ex.unit ? mdInline(ex.unit, where) : "",
+  };
+});
+---
+<p>ทำในกระดาษก่อน แล้วค่อยใส่คำตอบให้เว็บตรวจ ตอบผิดได้ไม่จำกัดครั้ง ติดจริงๆ ค่อยเปิดคำใบ้ทีละขั้น และเปิดวิธีทำหลังทำเสร็จแล้วเท่านั้น</p>
+
+{items.map(({ ex, n, statement, solution, hints, choices, steps, label, unit }) => (
+  <section class="ex" data-ex={data(ex)} data-level={ex.track}>
+    <h2 id={`ex-${ex.slug}`} class="ex-title"><span class="ex-num">ข้อ {n}</span> {ex.title}</h2>
+    <p class="ex-meta">ระดับ{LEVELS[ex.level ?? 1]}{ex.track === "adv" && "  เฉพาะสายเพิ่มเติม"}</p>
+    <Fragment set:html={statement} />
+
+    {ex.type === "choice" && (
+      <fieldset class="ex-choices">
+        <legend class="sr-only">{label}</legend>
+        {choices.map((c, i) => <label class="ex-choice"><input type="radio" name={`ex-${ex.slug}`} value={i} /><span set:html={c} /></label>)}
+      </fieldset>
+    )}
+    {ex.type === "order" && (
+      <ol class="ex-order" aria-label="เรียงขั้นตอน ใช้ปุ่มลูกศรเลื่อนขึ้นลง">
+        {steps.map(({ k, html }) => (
+          <li data-k={k}>
+            <span class="ex-order-text" set:html={html} />
+            <span class="ex-order-btns">
+              <button type="button" class="icon-btn" data-move="-1" aria-label="เลื่อนขึ้น">↑</button>
+              <button type="button" class="icon-btn" data-move="1" aria-label="เลื่อนลง">↓</button>
+            </span>
+          </li>
+        ))}
+      </ol>
+    )}
+    {ex.type === "point" && <div class="board ex-board" data-board={ex.board} role="img" aria-label={ex.board_label ?? "กราฟสำหรับลากจุด"} />}
+    {["number", "set"].includes(ex.type) && (
+      <div class="ex-field">
+        <label class="ex-label" for={`ans-${ex.slug}`} set:html={label} />
+        <input id={`ans-${ex.slug}`} class="ex-input" type="text" autocomplete="off" spellcheck="false"
+          placeholder={ex.type === "set" ? "คั่นแต่ละคำตอบด้วยจุลภาค" : "พิมพ์เศษส่วนแบบ 3/4 ได้"} />
+        {unit && <span class="ex-unit" set:html={unit} />}
+      </div>
+    )}
+    {ex.type === "expr" && (
+      <div class="ex-field">
+        <label class="ex-label" for={`ans-${ex.slug}`} set:html={label} />
+        <math-field id={`ans-${ex.slug}`} class="ex-math" math-virtual-keyboard-policy="auto"></math-field>
+        {unit && <span class="ex-unit" set:html={unit} />}
+      </div>
+    )}
+    {ex.type !== "self" && (
+      <div class="ex-actions">
+        <button type="button" class="btn ex-check">ตรวจคำตอบ</button>
+        <p class="ex-feedback" role="status" aria-live="polite"></p>
+      </div>
+    )}
+    {hints.map((h, j) => <details class="reveal"><summary>คำใบ้ขั้นที่ {j + 1}</summary><Fragment set:html={h} /></details>)}
+    {solution && (
+      <details class="reveal reveal-solution">
+        <summary>{ex.type === "self" ? "ดูเฉลยและเกณฑ์ตรวจ" : "ดูวิธีทำ"}</summary>
+        <Fragment set:html={solution} />
+      </details>
+    )}
+  </section>
+))}

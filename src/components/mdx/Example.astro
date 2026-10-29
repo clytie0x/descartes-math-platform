@@ -1,0 +1,6 @@
+---
+/* กล่องตัวอย่าง ใส่โจทย์ก่อน แล้วตามด้วย <Steps reveal> */
+interface Props { n?: number | string; label?: string }
+const { n, label } = Astro.props;
+---
+<div class="box example"><p class="box-label">{label ?? (n ? `ตัวอย่าง ${n}` : "ตัวอย่าง")}</p><slot /></div>

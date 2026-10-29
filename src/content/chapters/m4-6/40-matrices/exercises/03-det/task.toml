@@ -1,0 +1,17 @@
+title = "ดีเทอร์มิแนนต์"
+level = 1
+type = "number"
+statement = '''หา $\det\begin{bmatrix}4&3\\2&5\end{bmatrix}$'''
+solution = '''
+ใช้ $\det\begin{bmatrix}a&b\\c&d\end{bmatrix} = ad - bc$ ผลคูณแนวทแยงหลักคือ $4(5) = 20$ ผลคูณแนวทแยงรองคือ $3(2) = 6$
+
+นำมาลบกัน ได้ $20 - 6 = 14$
+'''
+answer = "14"
+truth = "Matrix([[4,3],[2,5]]).det()"
+track = "adv"
+hints = ["คูณทแยงหลักแล้วลบผลคูณทแยงรอง"]
+
+[[wrong]]
+answer = "26"
+message = "ดีเทอร์มิแนนต์ต้องลบผลคูณทแยงรอง ไม่ใช่บวก"

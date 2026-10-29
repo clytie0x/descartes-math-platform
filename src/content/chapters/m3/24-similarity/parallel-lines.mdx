@@ -1,0 +1,129 @@
+---
+num: '24.3'
+title: 'รูปสามเหลี่ยมคล้ายจากเส้นขนาน'
+goal: 'หาความยาวในรูปที่มีเส้นขนานตัดรูปสามเหลี่ยม หรือมีเส้นตรงสองเส้นไขว้กันระหว่างเส้นขนาน'
+---
+
+โจทย์ความคล้ายส่วนใหญ่ไม่ได้ให้รูปสามเหลี่ยมสองรูปแยกกันมาตรงๆ แต่ให้รูปที่มีเส้นขนาน แล้วรูปสามเหลี่ยมที่คล้ายกันซ่อนอยู่ข้างใน หน้านี้มีสองแบบที่เจอบ่อยที่สุด ทั้งสองแบบใช้มุมที่เกิดจากเส้นขนานในบทที่ 18 ไปหามุมที่เท่ากันสองคู่
+
+## แบบที่ 1 เส้นขนานตัดรูปสามเหลี่ยม
+
+<figure class="figure">
+  <svg class="fig" viewBox="0 0 340 225" role="img" aria-label="รูปสามเหลี่ยม ABC มีจุด D บน AB และจุด E บน AC โดย DE ขนานกับ BC AD ยาว 3 DB ยาว 6 DE ยาว 4 ถามความยาว BC">
+    <path class="line" d="M150 20 L40 200 L300 200 Z" />
+    <path class="fill-teal" d="M150 20 L113.3 80 L200 80 Z" />
+    <path class="line" d="M152 76 L157 80 L152 84" />
+    <path class="line" d="M165 196 L170 200 L165 204" />
+    <text class="label-small" x="122" y="52" text-anchor="end">3</text>
+    <text class="label-small" x="68" y="142" text-anchor="end">6</text>
+    <text class="label-small" x="160" y="74" text-anchor="middle">4</text>
+    <text class="label-small" x="170" y="218" text-anchor="middle">?</text>
+    <text class="label-math" x="150" y="13" text-anchor="middle">A</text>
+    <text class="label-math" x="104" y="84" text-anchor="end">D</text>
+    <text class="label-math" x="208" y="84">E</text>
+    <text class="label-math" x="28" y="212">B</text>
+    <text class="label-math" x="306" y="212">C</text>
+  </svg>
+  <figcaption>ลูกศรบน $DE$ และ $BC$ บอกว่าสองเส้นนี้ขนานกัน รูปสามเหลี่ยมเล็ก $ADE$ ซ้อนอยู่ในรูปสามเหลี่ยมใหญ่ $ABC$</figcaption>
+</figure>
+
+**กำหนดให้** $D$ อยู่บน $\overline{AB}$ และ $E$ อยู่บน $\overline{AC}$ โดย $\overline{DE} \parallel \overline{BC}$
+
+**ต้องการแสดงว่า** $\triangle ADE \sim \triangle ABC$
+
+| ข้อความ | เหตุผล |
+|---|---|
+| (1) $A\hat{D}E = A\hat{B}C$ | $\overline{DE} \parallel \overline{BC}$ มี $\overline{AB}$ เป็นเส้นตัด มุมภายนอกและมุมภายในที่อยู่ตรงข้ามบนข้างเดียวกันของเส้นตัดมีขนาดเท่ากัน |
+| (2) $A\hat{E}D = A\hat{C}B$ | เหตุผลเดียวกับ (1) โดยมี $\overline{AC}$ เป็นเส้นตัด |
+| (3) $\triangle ADE \sim \triangle ABC$ | มุมที่สมนัยกันเท่ากันสองคู่ จาก (1) และ (2) |
+
+จะใช้ $\hat{A}$ ซึ่งเป็นมุมร่วมของทั้งสองรูปแทนข้อ (2) ก็ได้ เพราะต้องการแค่สองคู่
+
+<Example n={1}>
+
+จากรูปข้างบน $AD = 3$ $DB = 6$ และ $DE = 4$ เซนติเมตร จงหา $BC$
+
+<Steps reveal>
+1. $\triangle ADE \sim \triangle ABC$ จับคู่ $A$ กับ $A$ $D$ กับ $B$ $E$ กับ $C$ จึงได้ $AD$ คู่กับ $AB$ และ $DE$ คู่กับ $BC$
+2. ด้านของรูปใหญ่คือ $AB$ ทั้งเส้น $AB = AD + DB = 3 + 6 = 9$ เซนติเมตร
+3. ตั้งสัดส่วน $\dfrac{BC}{DE} = \dfrac{AB}{AD}$ ได้ $\dfrac{BC}{4} = \dfrac{9}{3} = 3$
+4. $BC = 4 \times 3 = 12$ เซนติเมตร
+</Steps>
+</Example>
+
+{/* check: 4*Rational(3 + 6, 3) == 12 */}
+
+<Think>
+
+เพื่อนตั้งสัดส่วนว่า $\dfrac{BC}{DE} = \dfrac{DB}{AD} = \dfrac{6}{3}$ ได้ $BC = 8$ เซนติเมตร ผิดตรงไหน
+
+<Reveal>
+$DB$ ไม่ใช่ด้านของรูปสามเหลี่ยมรูปไหนเลย มันเป็นแค่ส่วนที่เหลือของ $\overline{AB}$ ด้านของรูปใหญ่ที่คู่กับ $AD$ คือ $AB = 9$ ทั้งเส้น ถ้าไม่แน่ใจ ให้วาดรูปสามเหลี่ยมเล็กกับรูปสามเหลี่ยมใหญ่แยกออกจากกันก่อน แล้วเขียนความยาวของแต่ละด้านลงไป จะเห็นทันทีว่า $DB$ ไม่ได้อยู่ในรูปไหน
+</Reveal>
+</Think>
+
+{/* check: 4*Rational(6, 3) == 8 and 4*Rational(6, 3) != 12 */}
+
+<Example n={2}>
+
+รูปสามเหลี่ยม $ABC$ มี $\overline{DE} \parallel \overline{BC}$ แบบเดียวกับรูปข้างบน ถ้า $DB = 4$ $DE = 6$ และ $BC = 9$ เซนติเมตร จงหา $AD$
+
+<Steps reveal>
+1. ให้ $AD = x$ เซนติเมตร จะได้ $AB = x + 4$
+2. จาก $\triangle ADE \sim \triangle ABC$ ได้ $\dfrac{AD}{AB} = \dfrac{DE}{BC}$ คือ $\dfrac{x}{x + 4} = \dfrac{6}{9}$
+3. คูณไขว้ $9x = 6(x + 4) = 6x + 24$
+4. ได้ $3x = 24$ จึงได้ $x = 8$ เซนติเมตร
+5. ตรวจ $AB = 12$ และ $\tfrac{8}{12} = \tfrac{6}{9}$ จริง
+</Steps>
+</Example>
+
+{/* check: solve(Eq(x/(x + 4), Rational(6, 9)), x) == [8] */}
+
+## แบบที่ 2 เส้นตรงไขว้กันระหว่างเส้นขนาน
+
+<figure class="figure">
+  <svg class="fig" viewBox="0 0 280 215" role="img" aria-label="AB ขนานกับ CD เส้น AC กับ BD ตัดกันที่ E เป็นรูปสามเหลี่ยมสองรูปหันหัวชนกัน AE ยาว 4 EC ยาว 10 AB ยาว 6 ถามความยาว CD">
+    <path class="fill-teal" d="M130 45 L214 45 L160 85 Z" />
+    <path class="fill-accent" d="M235 185 L25 185 L160 85 Z" />
+    <path class="line" d="M167 41 L172 45 L167 49" />
+    <path class="line" d="M125 181 L130 185 L125 189" />
+    <text class="label-small" x="137" y="70" text-anchor="end">4</text>
+    <text class="label-small" x="208" y="137">10</text>
+    <text class="label-small" x="172" y="37" text-anchor="middle">6</text>
+    <text class="label-small" x="130" y="203" text-anchor="middle">?</text>
+    <text class="label-math" x="124" y="40" text-anchor="end">A</text>
+    <text class="label-math" x="220" y="40">B</text>
+    <text class="label-math" x="241" y="200">C</text>
+    <text class="label-math" x="19" y="200" text-anchor="end">D</text>
+    <text class="label-math" x="174" y="90">E</text>
+  </svg>
+  <figcaption>$\overline{AB} \parallel \overline{CD}$ และ $\overline{AC}$ ตัดกับ $\overline{BD}$ ที่ $E$</figcaption>
+</figure>
+
+รูปแบบนี้รูปสามเหลี่ยมเล็กกลับหัวเมื่อเทียบกับรูปใหญ่ การจับคู่จุดยอดจึงพลาดง่ายกว่าแบบแรก
+
+<Example n={3}>
+
+จากรูป $AE = 4$ $EC = 10$ และ $AB = 6$ เซนติเมตร จงหา $CD$
+
+<Steps reveal>
+1. $A\hat{E}B = C\hat{E}D$ เพราะเป็นมุมตรงข้าม
+2. $B\hat{A}E = D\hat{C}E$ เพราะเป็นมุมแย้ง โดย $\overline{AB} \parallel \overline{CD}$ และมี $\overline{AC}$ เป็นเส้นตัด
+3. มุมเท่ากันสองคู่ จึงได้ $\triangle ABE \sim \triangle CDE$ จับคู่ $A$ กับ $C$ $B$ กับ $D$ และ $E$ กับ $E$
+4. $AB$ คู่กับ $CD$ และ $AE$ คู่กับ $CE$ ตั้งสัดส่วน $\dfrac{CD}{AB} = \dfrac{CE}{AE} = \dfrac{10}{4}$
+5. $CD = 6 \times \dfrac{10}{4} = 15$ เซนติเมตร
+</Steps>
+</Example>
+
+{/* check: 6*Rational(10, 4) == 15 */}
+
+<Note kind="warning" title="จุดที่อยู่ตรงข้ามกันคือจุดที่คู่กัน">
+ในรูปแบบที่ 2 จุด $A$ อยู่บนเส้นเดียวกับ $C$ ผ่าน $E$ จึงคู่กับ $C$ ไม่ใช่ $D$ ซึ่งอยู่ด้านซ้ายเหมือนกัน ถ้าจับคู่ตามตำแหน่งซ้ายขวาในรูป จะได้ $\triangle ABE \sim \triangle DCE$ ซึ่งผิด ให้หาคู่จากมุมที่เท่ากันเสมอ ไม่ใช่จากหน้าตาของรูป
+</Note>
+
+## สรุป
+
+- เส้นขนานตัดรูปสามเหลี่ยมได้รูปสามเหลี่ยมเล็กที่คล้ายกับรูปใหญ่ ใช้มุมจากเส้นขนานกับมุมร่วม
+- เส้นตรงสองเส้นไขว้กันระหว่างเส้นขนานได้รูปสามเหลี่ยมสองรูปที่คล้ายกัน ใช้มุมตรงข้ามกับมุมแย้ง
+- ด้านของรูปใหญ่คือด้านทั้งเส้น เช่น $AB = AD + DB$ อย่าใช้ $DB$ ตั้งสัดส่วน
+- ถ้าไม่แน่ใจ ให้วาดรูปสามเหลี่ยมสองรูปแยกกันแล้วจับคู่จุดยอดจากมุม

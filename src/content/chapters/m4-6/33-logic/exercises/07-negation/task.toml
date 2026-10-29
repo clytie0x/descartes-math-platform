@@ -1,0 +1,14 @@
+title = "นิเสธลูกศร"
+level = 1
+type = "choice"
+statement = '''นิเสธของ $p\to q$ สมมูลกับข้อใด'''
+solution = '''ลูกศรเป็นเท็จเมื่อ $p$ จริงและ $q$ เท็จ จึงได้นิเสธ $p\wedge\sim q$'''
+choices = ['''$\sim p\to\sim q$''', '''$p\wedge\sim q$''', '''$\sim p\vee q$''']
+checks = ["all(Not(Implies(p,q))==And(p,Not(q)) for p in [true,false] for q in [true,false])"]
+answer = 1
+track = "adv"
+hints = ["นิเสธลูกศรต้องบรรยายกรณีเดียวที่ลูกศรเป็นเท็จ"]
+
+[[wrong]]
+answer = 0
+message = "เปลี่ยนเป็นบทกลับหรือปฏิเสธทั้งสองไม่ได้ให้นิเสธของลูกศร"

@@ -1,0 +1,56 @@
+title = "เส้นจากจุดกึ่งกลางยาวเท่ากัน"
+level = 2
+type = "order"
+steps = [
+  '$DB = EC$ เพราะ $AB = AC$ และ $D$ กับ $E$ แบ่งครึ่ง $\overline{AB}$ กับ $\overline{AC}$',
+  '$D\hat{B}C = E\hat{C}B$ เพราะเป็นมุมที่ฐานของรูปสามเหลี่ยมหน้าจั่ว $ABC$',
+  '$BC = CB$ เพราะเป็นด้านร่วม',
+  '$\triangle DBC \cong \triangle ECB$ แบบ ด.ม.ด.',
+  '$CD = BE$ เพราะเป็นด้านคู่ที่สมนัยกันของรูปสามเหลี่ยมที่เท่ากันทุกประการ',
+]
+alternatives = [[0, 2, 1, 3, 4], [1, 0, 2, 3, 4], [1, 2, 0, 3, 4], [2, 0, 1, 3, 4], [2, 1, 0, 3, 4]]
+hints = ['$CD$ อยู่ใน $\triangle DBC$ และ $BE$ อยู่ใน $\triangle ECB$ สองรูปนี้มีด้าน $BC$ ร่วมกัน', 'มุมที่ $B$ กับมุมที่ $C$ ของสองรูปนี้คือมุมที่ฐานของ $\triangle ABC$']
+statement = '''
+$\triangle ABC$ มี $AB = AC$ จุด $D$ และ $E$ เป็นจุดกึ่งกลางของ $\overline{AB}$ และ $\overline{AC}$ ตามลำดับ เรียงขั้นการพิสูจน์ว่า $CD = BE$
+
+<figure class="figure">
+<svg class="fig" viewBox="0 0 320 250" role="img" aria-label="รูปสามเหลี่ยม ABC มี AB ยาวเท่ากับ AC จุด D และ E เป็นจุดกึ่งกลางของ AB และ AC ลาก CD และ BE">
+  <line class="line" x1="160" y1="30" x2="50" y2="215" />
+  <line class="line" x1="160" y1="30" x2="270" y2="215" />
+  <line class="line" x1="50" y1="215" x2="270" y2="215" />
+  <line class="teal" x1="270" y1="215" x2="105" y2="122.5" />
+  <line class="teal" x1="50" y1="215" x2="215" y2="122.5" />
+  <line class="line" x1="137.7" y1="79.3" x2="127.3" y2="73.2" />
+  <line class="line" x1="82.7" y1="171.8" x2="72.3" y2="165.7" />
+  <line class="line" x1="192.7" y1="73.2" x2="182.3" y2="79.3" />
+  <line class="line" x1="247.7" y1="165.7" x2="237.3" y2="171.8" />
+  <circle class="dot" cx="105" cy="122.5" r="3" />
+  <circle class="dot" cx="215" cy="122.5" r="3" />
+  <text class="label-math" x="160" y="20" text-anchor="middle">A</text>
+  <text class="label-math" x="38" y="231" text-anchor="middle">B</text>
+  <text class="label-math" x="282" y="231" text-anchor="middle">C</text>
+  <text class="label-math" x="91" y="122.5" text-anchor="middle">D</text>
+  <text class="label-math" x="229" y="122.5" text-anchor="middle">E</text>
+</svg>
+<figcaption>D และ E เป็นจุดกึ่งกลางของด้านที่ยาวเท่ากัน</figcaption>
+</figure>
+'''
+solution = '''
+| ข้อความ | เหตุผล |
+|---|---|
+| (1) $DB = EC$ | ครึ่งหนึ่งของ $AB$ เท่ากับครึ่งหนึ่งของ $AC$ เพราะ $AB = AC$ |
+| (2) $D\hat{B}C = E\hat{C}B$ | มุมที่ฐานของรูปสามเหลี่ยมหน้าจั่วมีขนาดเท่ากัน |
+| (3) $BC = CB$ | เป็นด้านร่วม |
+| (4) $\triangle DBC \cong \triangle ECB$ | ด.ม.ด. จาก (1) (2) (3) |
+| (5) $CD = BE$ | ด้านคู่ที่สมนัยกันของรูปสามเหลี่ยมที่เท่ากันทุกประการยาวเท่ากัน |
+
+สามบรรทัดแรกสลับกันได้ บรรทัด (2) ใช้ทฤษฎีบทมุมที่ฐานที่พิสูจน์แล้ว ไม่ต้องพิสูจน์ซ้ำ
+'''
+
+[[wrong]]
+answer = [0, 1, 2, 4, 3]
+message = "CD = BE ได้จากรูปสามเหลี่ยมที่เท่ากันทุกประการ ต้องสรุปว่าเท่ากันทุกประการก่อน"
+
+[[wrong]]
+answer = [0, 1, 3, 2, 4]
+message = "ด.ม.ด. ต้องมีส่วนที่เท่ากันครบสามคู่ก่อน ด้านร่วม BC จึงต้องมาก่อนการสรุปว่าเท่ากันทุกประการ"

@@ -1,0 +1,52 @@
+title = "มุมที่จุดหัก"
+level = 3
+type = "number"
+label = '$A\hat{E}C =$'
+unit = "องศา"
+answer = "85"
+truth = "38 + 47"
+hints = ['ลากเส้นผ่าน $E$ ให้ขนานกับ $\overleftrightarrow{AB}$', 'เส้นที่ลากแบ่ง $A\hat{E}C$ เป็นสองส่วน แต่ละส่วนเป็นมุมแย้งกับมุมที่กำหนดให้']
+statement = '''
+จากรูป $\overleftrightarrow{AB} \parallel \overleftrightarrow{CD}$ จุด $E$ อยู่ระหว่างเส้นทั้งสอง $B\hat{A}E = 38^\circ$ และ $D\hat{C}E = 47^\circ$ จงหาขนาดของ $A\hat{E}C$
+
+<figure class="figure">
+<svg class="fig" viewBox="0 0 360 225" role="img" aria-label="เส้นตรง AB ขนานกับ CD จุด E อยู่ทางซ้ายระหว่างเส้นทั้งสอง มุม BAE 38 องศา มุม DCE 47 องศา ต้องการหามุม AEC">
+  <path class="fill-accent" d="M183.2 50 L153.2 50 A30 30 0 0 0 159.6 68.5 Z" />
+  <path class="fill-teal" d="M169.9 190 L149.5 168.1 A30 30 0 0 0 139.9 190 Z" />
+  <path class="thin" d="M116.4 132.6 A24 24 0 0 0 118.9 100.2" />
+  <line class="line" x1="30" y1="50" x2="330" y2="50" />
+  <line class="line" x1="30" y1="190" x2="330" y2="190" />
+  <line class="line" x1="183.2" y1="50" x2="100" y2="115" />
+  <line class="line" x1="169.9" y1="190" x2="100" y2="115" />
+  <path class="line" d="M296 44 L304 50 L296 56" />
+  <path class="line" d="M296 184 L304 190 L296 196" />
+  <circle class="dot" cx="183.2" cy="50" r="3.5" />
+  <circle class="dot" cx="169.9" cy="190" r="3.5" />
+  <circle class="dot" cx="100" cy="115" r="3.5" />
+  <circle class="dot" cx="40" cy="50" r="3.5" />
+  <circle class="dot" cx="40" cy="190" r="3.5" />
+  <text class="label-math" x="183.2" y="37" text-anchor="middle">A</text>
+  <text class="label-math" x="40" y="37" text-anchor="middle">B</text>
+  <text class="label-math" x="169.9" y="215" text-anchor="middle">C</text>
+  <text class="label-math" x="40" y="215" text-anchor="middle">D</text>
+  <text class="label-math" x="84" y="120" text-anchor="middle">E</text>
+  <text class="label" x="139.7" y="70" text-anchor="middle">38°</text>
+  <text class="label" x="127.8" y="176.7" text-anchor="middle">47°</text>
+  <text class="label" x="139.9" y="123.1" text-anchor="middle">?</text>
+</svg>
+</figure>
+'''
+solution = '''
+1. ลาก $\overleftrightarrow{EF}$ ผ่าน $E$ ให้ขนานกับ $\overleftrightarrow{AB}$ โดยให้ $F$ อยู่ทางขวาของ $E$ จะได้ $\overleftrightarrow{EF} \parallel \overleftrightarrow{CD}$ ด้วย
+2. $A\hat{E}F = B\hat{A}E = 38^\circ$ เพราะเป็นมุมแย้ง มี $\overleftrightarrow{AE}$ เป็นเส้นตัด
+3. $F\hat{E}C = D\hat{C}E = 47^\circ$ เพราะเป็นมุมแย้ง มี $\overleftrightarrow{CE}$ เป็นเส้นตัด
+4. $A\hat{E}C = 38^\circ + 47^\circ = 85^\circ$
+'''
+
+[[wrong]]
+answer = "9"
+message = "มุมทั้งสองไม่ได้หักลบกัน เส้นขนานที่ลากผ่าน E แบ่งมุม AEC เป็นสองส่วน แต่ละส่วนเท่ากับมุมที่โจทย์ให้ จึงต้องบวกกัน"
+
+[[wrong]]
+answer = "95"
+message = "95° คือ 180° − 85° ไม่ใช่มุม AEC ลองลากเส้นขนานผ่าน E แล้วใช้มุมแย้งสองครั้ง"

@@ -1,0 +1,6 @@
+---
+/* กล่องสมบัติ ทฤษฎีบท หรือสูตร */
+interface Props { label?: string }
+const { label = "สมบัติ" } = Astro.props;
+---
+<div class="box thm"><p class="box-label">{label}</p><slot /></div>

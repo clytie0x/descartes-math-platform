@@ -1,0 +1,55 @@
+title = "ลูกบาศก์น้อยที่สุด"
+level = 3
+type = "number"
+unit = "ลูก"
+answer = "10"
+truth = "Min(*[p + q + r + s + u + v for p in range(1, 4) for q in range(1, 4) for r in range(1, 4) for s in range(1, 4) for u in range(1, 4) for v in range(1, 4) if Max(p, s) == 3 and Max(q, u) == 2 and Max(r, v) == 2 and Max(s, u, v) == 2 and Max(p, q, r) == 3])"
+hints = ['ภาพด้านบนมีครบหกช่อง ทุกช่องต้องมีอย่างน้อย 1 ลูก', 'หาว่ากองสูง 3 กับกองสูง 2 ต้องมีอยู่ที่ไหนบ้าง แล้วพยายามให้กองหนึ่งทำหน้าที่ทั้งหลักและแถว']
+statement = '''
+รูปที่ประกอบจากลูกบาศก์ขนาดเท่ากันรูปหนึ่งมีภาพสามด้านดังนี้ ภาพด้านข้างมองจากทางขวา รูปนี้ใช้ลูกบาศก์น้อยที่สุดกี่ลูก
+
+<figure class="figure">
+  <svg class="fig" viewBox="2 10 316 132" role="img" aria-label="ภาพด้านหน้าสูง 3 2 2 ภาพด้านข้างสูง 2 3 ภาพด้านบนเป็นหกช่องเต็ม">
+    <rect class="fill-accent" x="10" y="78" width="30" height="30" />
+    <rect class="fill-accent" x="10" y="48" width="30" height="30" />
+    <rect class="fill-accent" x="10" y="18" width="30" height="30" />
+    <rect class="fill-accent" x="40" y="78" width="30" height="30" />
+    <rect class="fill-accent" x="40" y="48" width="30" height="30" />
+    <rect class="fill-accent" x="70" y="78" width="30" height="30" />
+    <rect class="fill-accent" x="70" y="48" width="30" height="30" />
+    <text class="label" x="55" y="130" text-anchor="middle">ด้านหน้า</text>
+    <rect class="fill-violet" x="130" y="78" width="30" height="30" />
+    <rect class="fill-violet" x="130" y="48" width="30" height="30" />
+    <rect class="fill-violet" x="160" y="78" width="30" height="30" />
+    <rect class="fill-violet" x="160" y="48" width="30" height="30" />
+    <rect class="fill-violet" x="160" y="18" width="30" height="30" />
+    <text class="label" x="160" y="130" text-anchor="middle">ด้านข้าง</text>
+    <rect class="fill-teal" x="220" y="78" width="30" height="30" />
+    <rect class="fill-teal" x="220" y="48" width="30" height="30" />
+    <rect class="fill-teal" x="250" y="78" width="30" height="30" />
+    <rect class="fill-teal" x="250" y="48" width="30" height="30" />
+    <rect class="fill-teal" x="280" y="78" width="30" height="30" />
+    <rect class="fill-teal" x="280" y="48" width="30" height="30" />
+    <text class="label" x="265" y="130" text-anchor="middle">ด้านบน</text>
+  </svg>
+</figure>
+'''
+solution = '''
+1. หลักซ้าย กลาง ขวา สูง 3 2 2 แถวหน้าสูง 2 แถวหลังสูง 3 และทุกช่องมีอย่างน้อย 1 ลูก
+2. กองสูง 3 ต้องอยู่ในหลักซ้ายและในแถวหลัง วางที่หลังซ้ายกองเดียวได้ทั้งสองอย่าง
+3. หลักกลางกับหลักขวาต้องมีกองสูง 2 หลักละหนึ่งกอง และแถวหน้าต้องมีกองสูง 2 ด้วย วางที่หน้ากลางกับหน้าขวาก็ได้ครบทั้งสามเงื่อนไข
+4. ช่องที่เหลือคือหน้าซ้าย หลังกลาง หลังขวา ใส่ช่องละ 1 ลูก
+5. รวม $3 + 2 + 2 + 1 + 1 + 1 = 10$ ลูก ใช้กองสูง 2 น้อยกว่าสองกองไม่ได้ เพราะหลักกลางกับหลักขวาต้องมีกองสูง 2 คนละกอง
+'''
+
+[[wrong]]
+answer = "13"
+message = "13 คือจำนวนที่มากที่สุด ข้อนี้ถามน้อยที่สุด ให้แต่ละช่องสูงเท่าที่จำเป็นเท่านั้น"
+
+[[wrong]]
+answer = "7"
+message = "7 คือจำนวนช่องในภาพด้านหน้า แต่ภาพด้านบนบอกว่าแถวหลังก็มีลูกบาศก์ทุกช่องด้วย"
+
+[[wrong]]
+answer = "9"
+message = "ใช้กองสูง 2 แค่กองเดียวไม่ได้ หลักกลางกับหลักขวาต้องสูง 2 ทั้งคู่ กองเดียวอยู่สองหลักพร้อมกันไม่ได้"

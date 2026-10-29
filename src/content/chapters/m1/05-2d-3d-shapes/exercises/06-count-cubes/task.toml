@@ -1,0 +1,37 @@
+title = "กล่องนมในตู้แช่"
+level = 1
+type = "number"
+unit = "กล่อง"
+answer = "9"
+truth = "2 + 3 + 1 + 1 + 2"
+hints = ['ตัวเลขในช่องบอกว่าตรงนั้นซ้อนกันกี่กล่อง', 'บวกตัวเลขทุกช่อง']
+statement = '''
+ร้านค้าซ้อนกล่องนมรูปลูกบาศก์ขนาดเท่ากันไว้บนชั้น ภาพด้านบนของกองกล่องนมเป็นดังนี้ ตัวเลขในช่องบอกจำนวนกล่องที่ซ้อนกันตรงนั้น มีกล่องนมทั้งหมดกี่กล่อง
+
+<figure class="figure">
+  <svg class="fig" viewBox="-29 -4 186 124" role="img" aria-label="ภาพด้านบนสองแถวสามหลัก แถวหลังมีตัวเลข 2 3 1 แถวหน้ามีตัวเลข 1 2 และช่องว่าง">
+    <rect class="fill-teal" x="4" y="4" width="40" height="40" />
+    <text class="label" x="24" y="29" text-anchor="middle">2</text>
+    <rect class="fill-teal" x="44" y="4" width="40" height="40" />
+    <text class="label" x="64" y="29" text-anchor="middle">3</text>
+    <rect class="fill-teal" x="84" y="4" width="40" height="40" />
+    <text class="label" x="104" y="29" text-anchor="middle">1</text>
+    <rect class="fill-teal" x="4" y="44" width="40" height="40" />
+    <text class="label" x="24" y="69" text-anchor="middle">1</text>
+    <rect class="fill-teal" x="44" y="44" width="40" height="40" />
+    <text class="label" x="64" y="69" text-anchor="middle">2</text>
+    <text class="label-small" x="64" y="108" text-anchor="middle">ด้านหน้า</text>
+  </svg>
+</figure>
+'''
+solution = '''
+บวกตัวเลขทุกช่อง แถวหลัง $2 + 3 + 1 = 6$ แถวหน้า $1 + 2 = 3$ รวม $6 + 3 = 9$ กล่อง
+'''
+
+[[wrong]]
+answer = "5"
+message = "5 คือจำนวนช่องในภาพด้านบน แต่ละช่องซ้อนกันได้หลายกล่อง ต้องบวกตัวเลขในช่อง"
+
+[[wrong]]
+answer = "6"
+message = "6 คือจำนวนช่องในภาพด้านหน้า กล่องที่ถูกบังอยู่ข้างหลังไม่ได้นับ ให้บวกตัวเลขทุกช่องในภาพด้านบน"
